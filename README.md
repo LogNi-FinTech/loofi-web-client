@@ -1,7 +1,8 @@
-Loofi Back Offcie Portal
+LooFi Web Client (LooFi is cloud native opensource fintech platform)
 
-- Account leager creation
-- Back Office Transaction
-- Credit Management (Digital Credit)
-- Bulk Registraion Process
--
+- Account  creation
+- Add money from external source
+- Send Money
+- Payment and Bill Pay
+- Mobile Airtime TopUp
+
