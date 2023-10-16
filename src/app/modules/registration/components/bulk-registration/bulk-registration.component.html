@@ -1,0 +1,88 @@
+<div class="background-image">
+    <img src="assets/images/project-image/background-image.jpg">
+</div>
+
+<div class="container">
+
+    <div class="heading-container" fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="title">
+            Bulk Registration
+        </div>
+    </div>
+    
+    <mat-card fxLayout="column" fxLayoutAlign="start start">
+        <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+        <div fxLayout="column" fxLayoutAlign="start start">
+            <div class="w-100" fxLayout="row" fxLayoutAlign="start start">
+                <app-feature-guard fxLayout="row" fxLayoutAlign="start start" fxFlex="100"
+                    [feature]="'create-registration'">
+                    <button (click)="fileInput.click()" class="load-bulk-registraion" mat-flat-button fxFlex="100">
+                        Load bulk registraion </button>
+                </app-feature-guard>
+                <input hidden (change)="onFileSelected($event)" #fileInput type="file" id="file">
+            </div>
+            <ng-container *ngIf="dataSource">
+                <div class="table-container w-100" fxLayout="column" fxLayoutAlign="start start">
+                    <table mat-table [dataSource]="dataSource" class="mat-elevation-z0">
+
+                        <ng-container matColumnDef="identifier">
+                            <th mat-header-cell *matHeaderCellDef> Identifier </th>
+                            <td mat-cell *matCellDef="let element">   
+                                <span>{{element.identifier}}</span>
+                            </td>
+                        </ng-container>
+            
+                        <ng-container matColumnDef="firstName">
+                            <th mat-header-cell *matHeaderCellDef> First Name </th>
+                            <td mat-cell *matCellDef="let element">
+                                <span *ngIf="element.firstName != null">{{element.firstName}}</span>
+                                <span class="mr-40" *ngIf="element.firstName == null">{{'-'}}</span>
+                            </td>
+                        </ng-container>
+            
+                        <ng-container matColumnDef="lastName">
+                            <th mat-header-cell *matHeaderCellDef> Last Name </th>
+                            <td mat-cell *matCellDef="let element">
+                                <span *ngIf="element.lastName != null">{{element.lastName}}</span>
+                                <span class="mr-40" *ngIf="element.lastName == null">{{'-'}}</span>
+                            </td>
+                        </ng-container>
+            
+                        <ng-container matColumnDef="mobileNo">
+                            <th class="align-center" mat-header-cell *matHeaderCellDef> Mobile No </th>
+                            <td class="align-center" mat-cell *matCellDef="let element">
+                                <span *ngIf="element.mobileNo != null">{{element.mobileNo}}</span>
+                                <span class="mr-40" *ngIf="element.mobileNo == null">{{'-'}}</span>
+                            </td>
+                        </ng-container>
+            
+                        <ng-container matColumnDef="idNumber">
+                            <th class="align-center" mat-header-cell *matHeaderCellDef> Id Number </th>
+                            <td class="align-center" mat-cell *matCellDef="let element">
+                                <span *ngIf="element.idNumber != null">{{element.idNumber}}</span>
+                                <span class="mr-40" *ngIf="element.idNumber == null">{{'-'}}</span>
+                            </td>
+            
+                        </ng-container>
+            
+                        <ng-container matColumnDef="idType">
+                            <th class="align-right" mat-header-cell *matHeaderCellDef> Id Type </th>
+                            <td class="align-right" mat-cell *matCellDef="let element">
+                                <span *ngIf="element.idType != null">{{element.idType}}</span>
+                                <span class="mr-40" *ngIf="element.idType == null">{{'-'}}</span>
+                            </td>
+                        </ng-container>
+            
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="w-100 footer" fxLayout="row" fxLayoutAlign="end center">
+                    <button (click)="saveBulkRegistration()" mat-button class="button button-bg-color-yellow">Save</button>
+                </div>
+            </ng-container>
+        </div>
+    </mat-card>
+
+</div>

@@ -1,0 +1,99 @@
+<div class="container">
+    <mat-icon (click)="closeDialog()" class="cancel-icon font-w-700">cancel
+    </mat-icon>
+    <div class="basic-info" fxLayout="column" fxLayoutAlign.xs="center center" fxLayoutAlign="center center"
+        fxLayoutGap="0px" fxLayoutGap.xs="2px">
+        <img class="avatar" [src]="'assets/images/avatar/2.png'">
+        <div class="person-name">
+            {{data.accountInfo.name}}
+        </div>
+        <div class="account-identifier">
+            {{data.accountInfo.identifier}}
+        </div>
+    </div>
+
+    <div class="balance-info" fxLayout="column"  fxLayoutGap="10px">
+        <div class="balance" fxLayout="row" fxLayoutAlign="space-between center">
+            <div class="balance-text">
+                Current Balance
+            </div>
+            <div class="balance-show">
+                ${{ data.balanceInfo.balance | number: '1.2-2' }}
+            </div>
+        </div>
+
+        <div class="balance" fxLayout="row" fxLayoutAlign="space-between center">
+            <div class="balance-text">
+                Available Balance
+            </div>
+            <div class="balance-show">
+                ${{ data.balanceInfo.balance | number: '1.2-2' }}
+            </div>
+        </div>
+    </div>
+    <div class="transaction-summary">
+        Transaction Summary
+    </div>
+    <div class="transaction-info">
+        <div class="actual-summary">
+            <div class="date-container" fxLayout="row" fxLayoutAlign="space-between center">
+                <div class="date" >
+                    October 2024 (All Expenses)
+                </div>
+                <mat-icon class="date-icon font-w-700">calendar_month
+                </mat-icon>
+            </div>
+            <mat-divider class="divider"></mat-divider>
+            <div class="summary-container">
+                <div class="each-summary ml-50 mr-50 mb-50" fxLayout="row" fxLayoutAlign="space-between center">
+                    <ng-container [ngTemplateOutlet]="summary" [ngTemplateOutletContext]="{data:summaryList[0]}">
+                    </ng-container> 
+                    <ng-container [ngTemplateOutlet]="summary" [ngTemplateOutletContext]="{data:summaryList[1]}">
+                    </ng-container> 
+                </div>
+                <div class="each-summary ml-30 mr-30 mb-50" fxLayout="row" fxLayoutAlign="space-between center">
+                    <ng-container [ngTemplateOutlet]="summary" [ngTemplateOutletContext]="{data:summaryList[2]}">
+                    </ng-container> 
+                    <div fxLayout="column" fxLayoutAlign="center center">
+                        <div>
+                            Expense
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="center center"> 
+                            <div class="expense">
+                                {{ 5456322 | number: '1.2-2' }}
+                            </div>
+                            <mat-icon
+                                class="dollar-icon font-w-700">attach_money
+                            </mat-icon>
+                        </div>
+                    </div>
+                    <ng-container [ngTemplateOutlet]="summary" [ngTemplateOutletContext]="{data:summaryList[3]}">
+                    </ng-container> 
+                </div>
+                <div class="each-summary ml-50 mr-50" fxLayout="row" fxLayoutAlign="space-between center">
+                    <ng-container [ngTemplateOutlet]="summary" [ngTemplateOutletContext]="{data:summaryList[4]}">
+                    </ng-container> 
+                    <ng-container [ngTemplateOutlet]="summary" [ngTemplateOutletContext]="{data:summaryList[5]}">
+                    </ng-container> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #summary let-data='data'>
+    <div class="send-money" fxLayout="column" fxLayoutAlign="space-between center" fxLayoutGap="8px">
+        <div class="money-container" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="0px">
+            <!-- {{data.value | number: '1.2-2'}} Tk -->
+            <div class="expense">
+                {{data.value | number: '1.1-1'}}
+            </div>
+            <mat-icon
+                class="dollar-icon font-w-700 white">attach_money
+            </mat-icon>
+        </div>
+        <div class="money">
+           {{data.transferName}}
+        </div>
+    </div>
+</ng-template>

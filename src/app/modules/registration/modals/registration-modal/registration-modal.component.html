@@ -1,0 +1,368 @@
+<div fxLayout="row" fxLayoutAlign="space-between center" mat-dialog-title>
+    <h2 class="title">{{returnTitle()}}</h2>
+    <mat-icon class="close-icon" [mat-dialog-close]>close</mat-icon>
+</div>
+
+<mat-dialog-content fxLayout="row" fxLayoutAlign="center start">
+
+    <form fxFlex="100" fxLayout="column" fxLayoutAlign="center start" [formGroup]="registrationForm">
+        <div class="field-name-container" fxLayout="row" fxLayoutAlign="center center" fxFlex="100">
+            <div class="field-name" fxFlex="16">Identifier</div>
+            <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
+                <span fxFlex="100">{{registrationData.identifier}}</span>
+            </div>
+            <div *ngIf="isCreateMode" fxFlex="32" fxLayout="column" fxLayoutAlign="start start">
+                <mat-form-field class="form-field" appearance="outline">
+                    <mat-label>Identifier </mat-label>
+                    <input required placeholder="Identifier" matInput formControlName="identifier">
+                </mat-form-field>
+                <mat-error class="mat-error" *ngIf="registrationForm.get('identifier').hasError('uniqueValueError')"> Identifier already exist
+                </mat-error>
+            </div>
+            <div fxFlex="8"> </div>
+
+            <div class="field-name" fxFlex="14"> Mobile No </div>
+            <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
+                <span fxFlex="100">{{registrationData.mobileNo}}</span>
+            </div>
+            <mat-form-field *ngIf="isCreateMode" class="form-field" fxFlex="32" appearance="outline">
+                <mat-label>Mobile No</mat-label>
+                <input required placeholder="Mobile No" matInput formControlName="mobileNo">
+            </mat-form-field>
+        </div>
+
+        <div class="field-name-container" fxLayout="row" fxLayoutAlign="center center" fxFlex="100">
+            <div class="field-name" fxFlex="16">First Name </div>
+            <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
+                <span fxFlex="100">{{registrationData.firstName}}</span>
+            </div>
+            <mat-form-field *ngIf="isCreateMode" class="form-field" fxFlex="32" appearance="outline">
+                <mat-label>First Name</mat-label>
+                <input placeholder="First Name" matInput formControlName="firstName">
+            </mat-form-field>
+
+            <div fxFlex="8"> </div>
+    
+            <div class="field-name" fxFlex="14"> Last Name </div>
+            <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
+                <span fxFlex="100">{{registrationData.lastName}}</span>
+            </div>
+            <mat-form-field *ngIf="isCreateMode" class="form-field" fxFlex="32" appearance="outline">
+                <mat-label>Last Name</mat-label>
+                <input placeholder="Last Name" matInput formControlName="lastName">
+            </mat-form-field>
+        </div>
+
+        <div class="field-name-container" fxLayout="row" fxLayoutAlign="center center" fxFlex="100">
+            <div class="field-name" fxFlex="16">Id Number </div>
+            <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
+                <span fxFlex="100">{{registrationData.idNumber}}</span>
+            </div>
+            <div *ngIf="isCreateMode" fxFlex="32" fxLayout="column" fxLayoutAlign="start start">
+                <mat-form-field class="form-field" appearance="outline">
+                    <mat-label>Id Number </mat-label>
+                    <input required placeholder="Id Number" matInput formControlName="idNumber">
+                </mat-form-field>
+                <span class="mat-error color-red" *ngIf="isIdNumberExist"> Id Number already exist
+                </span>
+            </div>
+
+            <div fxFlex="8"> </div>
+    
+            <div class="field-name" fxFlex="14"> Id Type </div>
+            <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
+                <span fxFlex="100">{{registrationData.idType}}</span>
+            </div>
+            <mat-form-field *ngIf="isCreateMode" class="form-field" class="form-field" fxFlex="32" appearance="outline">
+                <mat-label>Id Type</mat-label>
+                <mat-select formControlName="idType" >
+                    <!-- <mat-option *ngFor="let value of idTypes" [value]="value">{{value}}</mat-option> -->
+                    <mat-option value="NID">{{'NID'}}</mat-option>
+                    <mat-option value="PASSPORT">{{'PASSPORT'}}</mat-option>
+                    <mat-option value="DRIVING_LICENCE">{{'DRIVING_LICENCE'}}</mat-option>
+                    <mat-option value="TRADE_LICENCE">{{'TRADE_LICENCE'}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="field-name-container" fxLayout="row" fxLayoutAlign="center center" fxFlex="100">
+            <div class="field-name" fxFlex="16"> Email </div>
+            <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
+                <span fxFlex="100">{{registrationData.email}}</span>
+            </div>
+            <mat-form-field *ngIf="isCreateMode" class="form-field" fxFlex="32" appearance="outline">
+                <mat-label>Email</mat-label>
+                <input placeholder="Email" matInput formControlName="email">
+            </mat-form-field>
+
+            <div fxFlex="8"> </div>
+    
+            <div class="field-name" fxFlex="14"> Area </div>
+            <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
+                <span fxFlex="100">{{registrationData.area}}</span>
+            </div>
+            <mat-form-field *ngIf="isCreateMode" class="form-field" fxFlex="32" appearance="outline">
+                <mat-label>Area</mat-label>
+                <input placeholder="Area" matInput formControlName="area">
+            </mat-form-field>
+        </div>
+
+        <div class="field-name-container" fxLayout="row" fxLayoutAlign="center center" fxFlex="100">
+            <div class="field-name" fxFlex="16"> Region </div>
+            <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
+                <span fxFlex="100">{{registrationData.region}}</span>
+            </div>
+            <mat-form-field *ngIf="isCreateMode" class="form-field" fxFlex="32" appearance="outline">
+                <mat-label>Region</mat-label>
+                <input placeholder="Region" matInput formControlName="region">
+            </mat-form-field>
+
+            <div fxFlex="8"> </div>
+    
+            <div class="field-name" fxFlex="14"> Territory </div>
+            <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
+                <span fxFlex="100">{{registrationData.territory}}</span>
+            </div>
+            <mat-form-field *ngIf="isCreateMode" class="form-field" fxFlex="32" appearance="outline">
+                <mat-label>Territory</mat-label>
+                <input placeholder="Territory" matInput formControlName="territory">
+            </mat-form-field>
+        </div>
+
+        <div class="field-name-container" fxLayout="row" fxLayoutAlign="center center" fxFlex="100">
+            <div class="field-name" fxFlex="16"> Alternative Account Number </div>
+            <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
+                <span fxFlex="100">{{registrationData.alternativeAccountNumber}}</span>
+            </div>
+            <mat-form-field *ngIf="isCreateMode" class="form-field" fxFlex="32" appearance="outline">
+                <mat-label>Alternative Account Number</mat-label>
+                <input placeholder="Alternative Account Number" matInput formControlName="alternativeAccountNumber">
+            </mat-form-field>
+
+            <div fxFlex="8"> </div>
+    
+            <div class="field-name" fxFlex="14"> </div>
+            <div class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
+                <span fxFlex="100"></span>
+            </div>
+        </div>
+
+        <h1 class="sub-heading">Present Address Information</h1>
+        <div class="field-name-container" fxLayout="row" fxLayoutAlign="center center" fxFlex="100">
+            <div class="field-name" fxFlex="16"> Present Address </div>
+            <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
+                <span fxFlex="100">{{registrationData.presentAddress}}</span>
+            </div>
+            <mat-form-field *ngIf="isCreateMode" class="form-field" fxFlex="32" appearance="outline">
+                <mat-label>Present Address</mat-label>
+                <input placeholder="Present Address" matInput formControlName="presentAddress">
+            </mat-form-field>
+
+            <div fxFlex="8"> </div>
+    
+            <div class="field-name" fxFlex="14"> Present City </div>
+            <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
+                <span fxFlex="100">{{registrationData.presentCity}}</span>
+            </div>
+            <mat-form-field *ngIf="isCreateMode" class="form-field" fxFlex="32" appearance="outline">
+                <mat-label>Present City </mat-label>
+                <input placeholder="Present City " matInput formControlName="presentCity">
+            </mat-form-field>
+        </div>
+
+        <div class="field-name-container" fxLayout="row" fxLayoutAlign="center center" fxFlex="100">
+            <div class="field-name" fxFlex="16"> Present Union </div>
+            <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
+                <span fxFlex="100">{{registrationData.presentUnion}}</span>
+            </div>
+            <mat-form-field *ngIf="isCreateMode" class="form-field" fxFlex="32" appearance="outline">
+                <mat-label>Present Union</mat-label>
+                <input placeholder="Present Union" matInput formControlName="presentUnion">
+            </mat-form-field>
+
+            <div fxFlex="8"> </div>
+    
+            <div class="field-name" fxFlex="14"> Present Thana </div>
+            <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
+                <span fxFlex="100">{{registrationData.presentThana}}</span>
+            </div>
+            <mat-form-field *ngIf="isCreateMode" class="form-field" fxFlex="32" appearance="outline">
+                <mat-label>Present Thana</mat-label>
+                <input placeholder="Present Thana" matInput formControlName="presentThana">
+            </mat-form-field>
+        </div>
+
+        <div class="field-name-container" fxLayout="row" fxLayoutAlign="center center" fxFlex="100">
+            <div class="field-name" fxFlex="16">Present District </div>
+            <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
+                <span fxFlex="100">{{registrationData.presentDistrict}}</span>
+            </div>
+            <mat-form-field *ngIf="isCreateMode" class="form-field" fxFlex="32" appearance="outline">
+                <mat-label>Present District</mat-label>
+                <input placeholder="Present District" matInput formControlName="presentDistrict">
+            </mat-form-field>
+
+            <div fxFlex="8"> </div>
+    
+            <div class="field-name" fxFlex="14"> Present Country </div>
+            <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
+                <span fxFlex="100">{{registrationData.presentCountry}}</span>
+            </div>
+            <mat-form-field *ngIf="isCreateMode" class="form-field" fxFlex="32" appearance="outline">
+                <mat-label>Present Country</mat-label>
+                <input placeholder="Present Country" matInput formControlName="presentCountry">
+            </mat-form-field>
+        </div>
+
+        <h1 class="sub-heading">Permanent Address Information</h1>
+        <div class="field-name-container" fxLayout="row" fxLayoutAlign="center center" fxFlex="100">
+            <div class="field-name" fxFlex="16"> Permanent Address </div>
+            <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
+                <span fxFlex="100">{{registrationData.permanentAddress}}</span>
+            </div>
+            <mat-form-field *ngIf="isCreateMode" class="form-field" fxFlex="32" appearance="outline">
+                <mat-label>Permanent Address</mat-label>
+                <input placeholder="Permanent Address" matInput formControlName="permanentAddress">
+            </mat-form-field>
+
+            <div fxFlex="8"> </div>
+    
+            <div class="field-name" fxFlex="14"> Permanent City </div>
+            <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
+                <span fxFlex="100">{{registrationData.permanentCity}}</span>
+            </div>
+            <mat-form-field *ngIf="isCreateMode" class="form-field" fxFlex="32" appearance="outline">
+                <mat-label>Permanent City</mat-label>
+                <input placeholder="Permanent City" matInput formControlName="permanentCity">
+            </mat-form-field>
+        </div>
+
+        <div class="field-name-container" fxLayout="row" fxLayoutAlign="center center" fxFlex="100">
+            <div class="field-name" fxFlex="16"> Permanent Union </div>
+            <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
+                <span fxFlex="100">{{registrationData.permanentUnion}}</span>
+            </div>
+            <mat-form-field *ngIf="isCreateMode" class="form-field" fxFlex="32" appearance="outline">
+                <mat-label>Permanent Union</mat-label>
+                <input placeholder="Permanent Union" matInput formControlName="permanentUnion">
+            </mat-form-field>
+
+            <div fxFlex="8"> </div>
+    
+            <div class="field-name" fxFlex="14"> Permanent Thana </div>
+            <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
+                <span fxFlex="100">{{registrationData.permanentThana}}</span>
+            </div>
+            <mat-form-field *ngIf="isCreateMode" class="form-field" fxFlex="32" appearance="outline">
+                <mat-label>Permanent Thana</mat-label>
+                <input placeholder="Permanent Thana" matInput formControlName="permanentThana">
+            </mat-form-field>
+        </div>
+
+        <div class="field-name-container" fxLayout="row" fxLayoutAlign="center center" fxFlex="100">
+            <div class="field-name" fxFlex="16"> Permanent District </div>
+            <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
+                <span fxFlex="100">{{registrationData.permanentDistrict}}</span>
+            </div>
+            <mat-form-field *ngIf="isCreateMode" class="form-field" fxFlex="32" appearance="outline">
+                <mat-label>Permanent District</mat-label>
+                <input placeholder="Permanent District" matInput formControlName="permanentDistrict">
+            </mat-form-field>
+
+            <div fxFlex="8"> </div>
+    
+            <div class="field-name" fxFlex="14"> Permanent Country </div>
+            <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
+                <span fxFlex="100">{{registrationData.permanentCountry}}</span>
+            </div>
+            <mat-form-field *ngIf="isCreateMode" class="form-field" fxFlex="32" appearance="outline">
+                <mat-label>Permanent Country</mat-label>
+                <input placeholder="Permanent Country" matInput formControlName="permanentCountry">
+            </mat-form-field>
+        </div>
+
+        <h1 class="sub-heading">Nominee Information</h1>
+        <div class="field-name-container" fxLayout="row" fxLayoutAlign="center center" fxFlex="100">
+            <div class="field-name" fxFlex="16">Nominee Name </div>
+            <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
+                <span fxFlex="100">{{registrationData.nomineeName}}</span>
+            </div>
+            <mat-form-field *ngIf="isCreateMode" class="form-field" fxFlex="32" appearance="outline">
+                <mat-label>Nominee Name</mat-label>
+                <input placeholder="Nominee Name" matInput formControlName="nomineeName">
+            </mat-form-field>
+
+            <div fxFlex="8"> </div>
+    
+            <div class="field-name" fxFlex="14"> Nominee Mobile </div>
+            <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
+                <span fxFlex="100">{{registrationData.nomineeMobile}}</span>
+            </div>
+            <mat-form-field *ngIf="isCreateMode" class="form-field" fxFlex="32" appearance="outline">
+                <mat-label>Nominee Mobile</mat-label>
+                <input placeholder="Nominee Mobile" matInput formControlName="nomineeMobile">
+            </mat-form-field>
+        </div>
+
+        <div class="field-name-container" fxLayout="row" fxLayoutAlign="center center" fxFlex="100">
+            <div class="field-name" fxFlex="16">NomineeId Number </div>
+            <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
+                <span fxFlex="100">{{registrationData.nomineeIdNumber}}</span>
+            </div>
+            <mat-form-field *ngIf="isCreateMode" class="form-field" fxFlex="32" appearance="outline">
+                <mat-label>NomineeId Number </mat-label>
+                <input placeholder="NomineeId Number " matInput formControlName="nomineeIdNumber">
+            </mat-form-field>
+
+            <div fxFlex="8"> </div>
+    
+            <div class="field-name" fxFlex="14"> NomineeId Type </div>
+            <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
+                <span fxFlex="100">{{registrationData.nomineeIdType}}</span>
+            </div>
+            <mat-form-field *ngIf="isCreateMode" class="form-field" class="form-field" fxFlex="32" appearance="outline">
+                <mat-label>NomineeId Type</mat-label>
+                <mat-select formControlName="nomineeIdType" >
+                    <!-- <mat-option *ngFor="let value of idTypes" [value]="value">{{value}}</mat-option> -->
+                    <mat-option value="NID">{{'NID'}}</mat-option>
+                    <mat-option value="PASSPORT">{{'PASSPORT'}}</mat-option>
+                    <mat-option value="DRIVING_LICENCE">{{'DRIVING_LICENCE'}}</mat-option>
+                    <mat-option value="TRADE_LICENCE">{{'TRADE_LICENCE'}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="field-name-container" fxLayout="row" fxLayoutAlign="center center" fxFlex="100">
+            <div class="field-name" fxFlex="16">Nominee Address </div>
+            <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
+                <span fxFlex="100">{{registrationData.nomineeAddress}}</span>
+            </div>
+            <mat-form-field *ngIf="isCreateMode" class="form-field" fxFlex="32" appearance="outline">
+                <mat-label>Nominee Address</mat-label>
+                <input placeholder="Nominee Address" matInput formControlName="nomineeAddress">
+            </mat-form-field>
+
+            <div fxFlex="8"> </div>
+    
+            <div class="field-name" fxFlex="14"> Nominee Relation </div>
+            <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
+                <span fxFlex="100">{{registrationData.nomineeRelation}}</span>
+            </div>
+            <mat-form-field *ngIf="isCreateMode" class="form-field" fxFlex="32" appearance="outline">
+                <mat-label>Nominee Relation</mat-label>
+                <input placeholder="Nominee Relation" matInput formControlName="nomineeRelation">
+            </mat-form-field>
+        </div>
+    </form>
+
+</mat-dialog-content>
+
+<mat-divider></mat-divider>
+<div class="footer" fxLayout="row" fxLayoutAlign="space-between center">
+    <button class="button" mat-button [mat-dialog-close]>Cancel</button>
+    <button *ngIf="isCreateMode" [disabled]="!registrationForm.valid" (click)="submit()" mat-button class="button button-bg-color-yellow">Submit</button>
+    <div *ngIf="!isCreateMode">
+        <button (click)="changeStatus('APPROVED')" mat-button class="button button-bg-color-yellow">Approve</button>        
+        <button (click)="changeStatus('REJECTED')" mat-button class="button button-bg-color-yellow">Reject</button>
+    </div>
+</div>

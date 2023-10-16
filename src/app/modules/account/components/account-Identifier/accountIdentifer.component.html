@@ -1,0 +1,46 @@
+<div style="width: 100%; margin: 20px;" fxLayout="column" fxLayoutAlign="start start">
+    <div style="width: 100%;" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="25px">
+        <span fxFlex="40" style="font-weight: bold; font-size: 20px; line-height: 50px;">Account Detail :</span>
+        <!-- <input type="text" [(ngModel)]="balance"> -->
+        <mat-form-field class="form-field" fxFlex="30" appearance="outline">
+            <mat-label>Account Number</mat-label>
+            <input placeholder="Account Number" matInput [(ngModel)]="identifier">
+        </mat-form-field>
+        <button fxFlex="20" (click)="getAccount()" mat-button
+            class="button button-bg-color-yellow mt-3">View</button>
+    </div>
+
+    <table *ngIf="showAc" class="content-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Identifier</th>
+                <th>LedgerId</th>
+                <th>LedgerName</th>
+                <th>CustomerId</th>
+                <th>State</th>
+                <th>Volume</th>
+                <th>LowerLimit</th>
+                <th>AlternativeAccountNumber</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+
+                <td>{{listAcIdentifiers.name}}</td>
+                <td>{{listAcIdentifiers.identifier}}</td>
+                <td>{{listAcIdentifiers.ledgerId}}</td>
+                <td>{{listAcIdentifiers.ledgerName}}</td>
+                <td>{{listAcIdentifiers.customerId}}</td>
+                <td>{{listAcIdentifiers.state}}</td>
+                <td>{{listAcIdentifiers.volume}}</td>
+                <td>{{listAcIdentifiers.lowerLimit}}</td>
+                <td>{{listAcIdentifiers.alternativeAccountNumber}}</td>
+
+            </tr>
+        </tbody>
+
+    </table>
+
+</div>

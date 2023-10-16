@@ -1,0 +1,35 @@
+.bankLogoText{
+    width: 120px !important;
+    height: 30px !important;
+}
+
+.bankLogo{
+    width: 25px !important;
+    height: 25px !important;
+    margin-bottom: 4px !important;
+}
+
+.logo-wrapper{
+    margin: auto !important;
+}
+
+.bank-title{
+    font-weight: 600;
+    font-size: 28px;
+    color: rgb(48, 99, 245);
+}
+
+.bank-logo-icon{
+    color: #0053CD;
+    font-size: 27px;
+}
+
+@media screen and (max-width: 560px) {
+    .bank-title{
+        font-size: 18px;
+    }
+
+    .bank-logo-icon{
+        font-size: 18px;
+    }
+}

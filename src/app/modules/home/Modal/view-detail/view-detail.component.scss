@@ -1,0 +1,168 @@
+.container{
+    width: 550px;
+    max-height: 90vh;
+    font-family: 'Varela Round', sans-serif;
+    position: relative;
+}
+
+.cancel-icon{
+    position: absolute;
+    top: 10px;
+    right: 15px;
+}
+
+.basic-info{
+    padding-top: 20px;
+}
+
+.avatar {
+    height: 100px !important;
+    width: 100px !important;
+    border-radius: 50%;
+}
+
+.person-name{
+    font-size: 23px;
+    font-weight: 600;
+}
+
+.balance-info{
+    padding-top: 20px;
+    background-color: #f1f5f9;
+    border-radius: 5px;
+    padding: 10px 10px;
+    margin: 10px 20px 15px;
+}
+
+.balance{
+    background: rgb(48, 99, 245);;
+    padding: 0px 10px;
+    border-radius: 20px;
+}
+
+.account-identifier {
+    font-size: 12px;
+    font-weight: 500;
+    color: #909090;
+}
+
+.balance-show{
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+}
+
+.transaction-info{
+    background-color: #f3f3f3;
+    padding-bottom: 22px;
+}
+
+.summary-container{
+    background-color: #f3f3f3;
+    margin-top: 10px;
+}
+
+.money-container{
+    background-color: rgb(48, 99, 245);;
+    padding: 3px 3px 2px 10px;
+    border-radius: 10px;
+    display: inline-block;
+    color: white;
+}
+
+.money{
+    font-weight: 600;
+    font-family: sans-serif !important;
+}
+
+.mr-50{
+    margin-right: 50px !important;
+}
+
+.ml-50{
+    margin-left: 50px !important;
+}
+
+.mb-50{
+    margin-bottom: 80px !important;
+}
+
+.pt-10{
+    padding-top: 10px !important;
+}
+
+.ml-30{
+    margin-left: 30px !important;
+}
+
+.mr-30{
+    margin-right: 30px !important;
+}
+
+.dollar-icon{
+    font-size: 18px;
+}
+
+.divider{
+    border-top: 3px solid #e2e8f0 !important;
+    margin: 0px 20px !important;
+}
+
+.transaction-summary{
+    padding: 2px 10px;
+    background: #20b5e8;
+    border-radius: 20px;
+    width: 165px;
+    margin: 0px 20px 10px;
+}
+
+.date-container{
+    margin-left: 20px;
+    margin-top: 10px;
+    padding: 8px 0px;
+    margin-right: 20px;
+}
+
+.date{
+    font-size: 18px;
+}
+
+.date-icon{
+    font-size: 18px;
+}
+
+.balance-text{
+    color: white;
+}
+
+::ng-deep .app-full-bleed-dialog{
+    @media screen and (max-width: 560px) {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+}
+
+::ng-deep .app-full-bleed-dialog .mat-dialog-container {
+    @media screen and (max-width: 560px) {
+        width: calc(100% - 16px);
+        margin: auto;
+    }
+}
+
+
+@media screen and (max-width: 560px) {
+
+    .container{
+        width: 100%;
+    }
+
+    .balance-show {
+        font-size: 14px !important;
+        color: white;
+    }
+
+    // .balance{
+    //     width: 100%;
+    // }
+
+}

@@ -1,0 +1,84 @@
+<div fxLayout="row" fxLayoutAlign="space-between center" mat-dialog-title>
+    <h2 class="title">{{'Repayment List'}}</h2>
+    <mat-icon class="close-icon" [mat-dialog-close]>close</mat-icon>
+</div>
+
+<mat-dialog-content fxLayout="row" fxLayoutAlign="center start">
+    <div fxFlex="100"> 
+        <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+        <div class="table-container">
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z0">
+                <ng-container matColumnDef="txnId">
+                    <th mat-header-cell *matHeaderCellDef> Transaction Id </th>
+                    <td mat-cell *matCellDef="let element">
+                        <span *ngIf="element.txnId != null">{{element.txnId}}</span>
+                        <span *ngIf="element.txnId == null">{{'-'}}</span>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="principleAmount">
+                    <th mat-header-cell *matHeaderCellDef> Principle Amount </th>
+                    <td mat-cell *matCellDef="let element">
+                        <span>{{element.principleAmount}}</span>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="interestAmount">
+                    <th mat-header-cell *matHeaderCellDef> Interest Amount </th>
+                    <td mat-cell *matCellDef="let element">
+                        <span *ngIf="element.interestAmount != null">{{element.interestAmount}}</span>
+                        <span *ngIf="element.interestAmount == null">{{'-'}}</span>
+                    </td>
+
+                </ng-container> 
+
+                <ng-container matColumnDef="unPaidPrincipleAmount">
+                    <th mat-header-cell *matHeaderCellDef> Unpaid Principle Amount </th>
+                    <td class="align-center" mat-cell *matCellDef="let element">
+                        <span *ngIf="element.unPaidPrincipleAmount != null">{{element.unPaidPrincipleAmount}}</span>
+                        <span *ngIf="element.unPaidPrincipleAmount == null">{{'-'}}</span>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="unPaidInterestAmount">
+                    <th mat-header-cell *matHeaderCellDef> Unpaid Interest Amount </th>
+                    <td class="align-center" mat-cell *matCellDef="let element">
+                        <span *ngIf="element.unPaidInterestAmount != null">{{element.unPaidInterestAmount}}</span>
+                        <span *ngIf="element.unPaidInterestAmount == null">{{'-'}}</span>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="status">
+                    <th class="align-center" mat-header-cell *matHeaderCellDef> Status </th>
+                    <td class="align-center" mat-cell *matCellDef="let element">
+                        <span *ngIf="element.status != null">{{element.status}}</span>
+                        <span *ngIf="element.status == null">{{'-'}}</span>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="payment">
+                    <th class="align-center" mat-header-cell *matHeaderCellDef> Payment </th>
+                    <td class="align-center" mat-cell *matCellDef="let element">
+                        <button [disabled]="element.status == 'PAID' || element.status == 'PARTIAL_PAID'" (click)="payment(element, 'PAID')" class="button">Payment</button>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="partialPayment">
+                    <th class="align-center" mat-header-cell *matHeaderCellDef> Partial Payment </th>
+                    <td class="align-center" mat-cell *matCellDef="let element">
+                        <button [disabled]="element.status == 'PAID'" (click)="payment(element, 'PARTIAL_PAID')" class="button">Partial Payment</button>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </div>
+    </div>
+
+</mat-dialog-content>
+
+<mat-divider></mat-divider>
+<div class="footer" fxLayout="row" fxLayoutAlign="space-between center">
+    <button class="button" mat-button [mat-dialog-close]>Cancel</button>
+</div>

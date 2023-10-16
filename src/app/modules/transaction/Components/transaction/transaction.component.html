@@ -1,0 +1,91 @@
+<div class="background-image">
+    <img src="assets/images/project-image/background-image.jpg">
+</div>
+
+<div class="container">
+
+    <div class="heading-container" fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="title">
+            Transaction
+        </div>
+        <app-feature-guard [feature]="'create-mfs-ledger-transaction'">
+            <button [matMenuTriggerFor]="menu" class="project-button" mat-flat-button fxFlex="198px">
+                <mat-icon class="add-icon">add_circle</mat-icon> Transaction</button>
+        </app-feature-guard>
+
+    </div>
+    <mat-menu #menu="matMenu">
+        <button (click)="openDialog('BankCashIn')" mat-menu-item>Bank CashIn</button>
+        <button (click)="openDialog('BankCashOut')" mat-menu-item>Bank CashOut</button>
+        <button (click)="openDialog('Ledger')" mat-menu-item>Ledger</button>
+    </mat-menu>
+    
+
+    <mat-card>
+        <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+        <div>
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z0">
+
+                <ng-container matColumnDef="amount">
+                    <th mat-header-cell *matHeaderCellDef> Amount </th>
+                    <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="fromAC">
+                    <th mat-header-cell *matHeaderCellDef> From Account </th>
+                    <td mat-cell *matCellDef="let element"> {{element.fromAC}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="toAc">
+                    <th mat-header-cell *matHeaderCellDef> To Account </th>
+                    <td mat-cell *matCellDef="let element"> {{element.toAc}} </td>
+                </ng-container>
+
+                <!-- <ng-container matColumnDef="branch">
+                    <th class="align-center" mat-header-cell *matHeaderCellDef> Branch </th>
+                    <td class="align-center" mat-cell *matCellDef="let element"> {{element.branch}} </td>
+                </ng-container> --> 
+
+                <ng-container matColumnDef="txnTime">
+                    <th class="align-center" mat-header-cell *matHeaderCellDef> Transaction Time </th>
+                    <td class="align-center" mat-cell *matCellDef="let element"> {{element.txnTime | date:'short'}}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="lastModifiedDate">
+                    <th class="align-center" mat-header-cell *matHeaderCellDef> Approved Time </th>
+                    <td class="align-center" mat-cell *matCellDef="let element"> 
+                        <span *ngIf="element.txnId != null">{{element.lastModifiedDate | date:'short'}}</span>
+                        <span *ngIf="element.txnId == null">{{'-'}}</span>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="txnId">
+                    <th class="align-right" mat-header-cell *matHeaderCellDef> TransactionID </th>
+                    <td class="align-right"  mat-cell *matCellDef="let element"> 
+                        <span *ngIf="element.txnId != null">{{element.txnId}}</span>
+                        <span class="mr-40" *ngIf="element.txnId == null">{{'-'}}</span>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="status">
+                    <th class="align-center w-30" mat-header-cell *matHeaderCellDef> Status </th>
+                    <td class="align-center w-30" mat-cell *matCellDef="let element">
+                        <app-feature-guard [feature]="'approve-mfs-ledger-transaction'">
+                        <button *ngIf="element.status === 'PENDING'" (click)="changeStatusMfsLedgerTransaction(element)"
+                            class="button">Approve</button>
+                        <button *ngIf="element.status !== 'PENDING'" disabled class="button">Approved</button>
+                    </app-feature-guard>
+                    <app-feature-guard [feature]="'status-mfs-ledger-transaction'">
+                        {{element.status}}
+                    </app-feature-guard>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </div>
+    </mat-card>
+
+</div>

@@ -1,0 +1,14 @@
+<div fxLayout="row" fxLayoutAlign="space-between center" mat-dialog-title>
+    <h2 class="title">{{'Delete confirm'}}</h2>
+    <mat-icon class="close-icon" [mat-dialog-close]>close</mat-icon>
+</div>
+
+<mat-dialog-content fxLayout="row" fxLayoutAlign="center center">
+    <span>Are you sure, you want to delete?</span>
+</mat-dialog-content>
+
+<mat-divider></mat-divider>
+<div class="footer" fxLayout="row" fxLayoutAlign="space-between center">
+    <button class="button" mat-button [mat-dialog-close]>Cancel</button>
+    <button (click)="delete()" mat-button class="button button-bg-color-yellow">Confirm</button>
+</div>

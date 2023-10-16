@@ -1,0 +1,190 @@
+<mat-spinner *ngIf="isLoading" class="spinner"></mat-spinner>
+
+<div class="w-100p" *ngIf="!isLoading">
+    <div class="services-wrapper" fxLayout="row" fxLayoutAlign="space-between start" fxLayoutGap="20px" fxLayoutGap.xs="10px" fxLayout.xs="column">
+
+        <div class="account-section" fxFlex="65" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="30px">
+            <div fxLayout="column" fxLayoutAlign="center start" fxLayoutGap="15px" fxLayoutGap.xs="5px">
+                <div class="account-name-text">
+                    Account Name
+                </div>
+                <div fxLayout="row"  fxLayoutAlign.xs="center center" fxLayoutAlign="center start" fxLayoutGap="18px" fxLayoutGap.xs="2px">
+                    <mat-icon class="person-icon">person_3</mat-icon>
+                    <div class="person-name">
+                        {{accountInfo.name}}
+                    </div>
+                </div>
+            </div> 
+            <div fxLayout="column" fxLayoutAlign="center end" fxLayoutGap="20px" fxLayoutGap.xs="10px">
+                <div (click)="openViewModal()" class="view-detail cursor-pointer" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+                    <mat-icon class="color-white visibility-icon">visibility</mat-icon>
+                    <div class="color-white">View Details</div>
+                </div>
+                
+                <div class="account-status-number-container" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="15px" fxLayoutGap.xs="8px">
+                    <div fxHide.xs class="account-number">{{accountInfo.identifier}}</div>
+                    <div class="account-status" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="6px">
+                        <div class="active-icon"></div>
+                        <div class="color-white">
+                            Active 
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="isXsStyleActive" class="account-number">{{accountInfo.identifier}}</div>
+                <!-- <mat-icon class="rotate-45">arrow_circle_down</mat-icon>
+                <mat-icon class="rotate-90">arrow_circle_down</mat-icon> -->
+                
+            </div>
+        </div>
+
+        <div fxFlex="35" fxFlex.xs="45" class="balance-section" fxLayout="column" fxLayout.xs="row" fxLayoutAlign="center start"  fxLayoutAlign.xs="space-between space-between"
+         fxLayoutGap="0px" fxLayoutGap.xs="0px">
+            <div>
+                <div class="account-name-text">
+                    Current Balance
+                </div>
+                <div class="balance-container mb-15" fxLayout="row" fxLayoutAlign="center start"
+                    fxLayoutAlign.xs="center center" fxLayoutGap="12px" fxLayoutGap.xs="4px">
+                    <mat-icon class="balance-icon">account_balance_wallet</mat-icon>
+                    <div class="balance-show">
+                        ${{ balanceInfo.balance | number: '1.2-2' }}
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="isXsStyleActive"  style="width: 1.5px; height: 100%; background-color: rgb(236,240,249);"></div>
+            <div>
+                <div class="account-name-text">
+                    Available Balance
+                </div>
+                <div class="balance-container" fxLayout="row" fxLayoutAlign="center start" fxLayoutAlign.xs="center center"
+                    fxLayoutGap="12px" fxLayoutGap.xs="4px">
+                    <mat-icon class="balance-icon">account_balance_wallet</mat-icon>
+                    <div class="balance-show">
+                        ${{ balanceInfo && balanceInfo.availableBalance ? balanceInfo.availableBalance : balanceInfo.balance |
+                        number: '1.2-2' }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="balance-section" fxLayout="column" fxLayoutGap="8px" fxLayoutAlign="center center">
+            <div class="balance-text">Account Number</div>
+            <div class="balance" fxLayout="row" fxLayoutAlign="center center">
+                <div>78375839478</div>
+            </div>
+        </div>
+        <div style="width: 1.5px; height: 100%; background-color: rgb(236,240,249);"></div>
+        <div class="balance-section" fxLayout="column" fxLayoutGap="8px">
+            <div class="balance-text">Available balance</div>
+            <div class="balance" fxLayout="row" fxLayoutAlign="center center">
+                <div>12,4589</div>
+                <mat-icon class="dollar-icon">attach_money</mat-icon>
+            </div>
+        </div> -->
+    </div>
+
+
+    <div [formGroup]="filterTransaction" class="transaction-container">
+        <div class="transfer-history">
+            Transfer History
+        </div>
+        <div>
+            <mat-button-toggle-group name="fontStyle" aria-label="Font Style" formControlName="filterTransactionControl" [compareWith]="compareByValue"
+                multiple="false" color="primary">
+                <mat-button-toggle  [ngClass]="{'toggle-button-XsStyle': isXsStyleActive}" class="mr-16" *ngFor="let option of filterTransactions" [value]="option">{{option.viewValue}}
+                </mat-button-toggle>
+            </mat-button-toggle-group>
+        </div>
+
+
+        <div class="container mt-12">
+            <ul class="responsive-table">
+                <li fxHide.xs class="table-header" fxLayout="row" fxLayoutAlign="space-between center">
+                    <div fxFlex="20" class="col col-1">Account/Wallet</div>
+                    <div fxFlex="20" class="col col-2">Transaction Type</div>
+                    <div fxFlex="20" class="col col-3">Amount</div>
+                    <div fxFlex="20" class="col col-4">Transaction ID</div>
+                    <div fxFlex="20" class="col col-4">Date</div>
+                </li>
+                <li *ngFor="let transaction of transactions;" class="table-row-style" fxLayout="row"
+                    fxLayoutAlign="space-between center">
+                    <div class="first-column" fxFlex="20" fxLayout="row" fxLayoutAlign="start center">
+                        <img class="avatar" [src]="'assets/images/avatar/' + transaction.image">
+                        <div fxLayout="column" fxLayoutAlign="start start" [ngStyle]="{'fxLayoutGap': isXsStyleActive? '0px' : '4px'}">
+                            <div [ngClass]="{'money-type-xs-style': isXsStyleActive}"  *ngIf="isXsStyleActive" fxLayout="row" fxLayoutAlign="start center">
+                                <!-- {{transaction.txnType}} -->
+                                <div>{{transaction.txnType}}</div>
+                                <mat-icon class="money-direction-icon" [ngClass]="{'outgoing-direction': !transaction.MoneyDirection,
+                                 'incoming-direction': transaction.MoneyDirection}">
+                                    arrow_circle_down
+                                </mat-icon>
+                            </div>
+                            <div>{{transaction.remoteAccount}}</div>
+                            <div *ngIf="isXsStyleActive" [ngClass]="{'trans-Id-xs-style': isXsStyleActive}">Trans ID: {{transaction.txnId}}</div>
+                        </div>
+                    </div>
+                    <div fxHide.xs fxFlex="20" fxLayout="row" fxLayoutAlign="start center">
+                        <div>{{transaction.txnType}}</div>
+                        <mat-icon class="money-direction-icon" [ngClass]="{'outgoing-direction': !transaction.MoneyDirection,
+                         'incoming-direction': transaction.MoneyDirection}">
+                            arrow_circle_down
+                        </mat-icon>
+                    </div>
+                    <div fxHide.xs fxFlex="20" fxLayout="row" fxLayoutAlign="start center">
+                        <ng-container [ngTemplateOutlet]="transactionIndicator" [ngTemplateOutletContext]="{transaction:transaction}"></ng-container>
+                    </div>
+                    <div fxHide.xs fxFlex="20">{{transaction.txnId}}</div>
+                    <div class="last-column" fxFlex="20" fxLayout="column" fxLayoutAlign="start start" [ngClass]="{'align-items-end': isXsStyleActive}">
+                        <div *ngIf="isXsStyleActive" fxLayout="row" fxLayoutAlign="start center"> 
+                            <ng-container [ngTemplateOutlet]="transactionIndicator" [ngTemplateOutletContext]="{transaction:transaction}">
+                            </ng-container> 
+                        </div>
+                        <div [ngClass]="{'date-xs-style': isXsStyleActive}"> {{transaction.formattedDate}} </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+</div>
+
+<ng-template #transactionIndicator let-transaction='transaction'>
+    <ng-container *ngIf="transaction.MoneyDirection; else elseTemplate">
+      <div>
+        <span class="green font-w-700 w-14 mr-4">+</span>
+      </div>
+    </ng-container>
+    <ng-template #elseTemplate>
+      <div>
+        <span class="red font-w-700 w-14 mr-4">-</span>
+      </div>
+    </ng-template>
+    <div class="font-w-700"
+         [ngClass]="{'red': !transaction.MoneyDirection, 'green': transaction.MoneyDirection}">
+      {{ transaction.amount | number: '1.2-2' }}
+    </div>
+    <div>
+      <mat-icon [ngClass]="{'red': !transaction.MoneyDirection, 'green': transaction.MoneyDirection}"
+                class="dollar-icon font-w-700 w-14">attach_money</mat-icon>
+    </div>
+  </ng-template>
+  
+
+
+<!-- <div class="account-section" fxLayout="column" fxLayoutGap="8px">
+    <div class="account">Account</div>
+    <div class="account-number">1459754632</div>
+</div>
+<div class="balance-section" fxLayout="column" fxLayoutGap="8px">
+    <div class="balance-text">Available balance</div>
+    <div class="balance" fxLayout="row" fxLayoutAlign="center center">
+        <div>12,4589</div>
+        <mat-icon class="dollar-icon">attach_money</mat-icon>
+    </div>
+</div> 
+ <mat-icon class="dollar-icon green font-w-700 w-14">add</mat-icon> src="assets/images/avatar/1.jpg" 
+
+-->
+
+
+   <!-- <mat-icon class="dollar-icon red font-w-700 w-14">remove</mat-icon> -->

@@ -1,0 +1,41 @@
+<div fxLayout="row" fxLayoutAlign="space-between center" mat-dialog-title>
+    <h2 class="title">{{returnTitle()}}</h2>
+    <mat-icon class="close-icon" [mat-dialog-close]>close</mat-icon>
+</div>
+
+<mat-dialog-content fxLayout="row" fxLayoutAlign="center center">
+
+    <form fxFlex="100" fxLayout="column" fxLayoutAlign="center center" [formGroup]="transactionForm">
+        <mat-form-field *ngIf="isTransactionTypeCashIn || isTransactionTypeLedger" class="form-field" fxFlex="100" appearance="outline">
+            <mat-label>To Account</mat-label>
+            <input placeholder="To Account" matInput required formControlName="toAc">
+        </mat-form-field>
+
+        <mat-form-field *ngIf="!isTransactionTypeCashIn || isTransactionTypeLedger" class="form-field" fxFlex="100" appearance="outline">
+            <mat-label>From Account</mat-label>
+            <input placeholder="From Account" matInput required formControlName="fromAC">
+        </mat-form-field>
+
+        <mat-form-field class="form-field" fxFlex="100" appearance="outline">
+            <mat-label>Amount</mat-label>
+            <input placeholder="Amount" type="number" matInput required formControlName="amount">
+        </mat-form-field>
+
+        <mat-form-field class="form-field" fxFlex="100" appearance="outline">
+            <mat-label>Note</mat-label>
+            <input placeholder="Note" matInput required formControlName="note">
+        </mat-form-field>
+
+        <mat-form-field class="form-field" fxFlex="100" appearance="outline">
+            <mat-label>Reference</mat-label>
+            <input placeholder="Reference" matInput required formControlName="reference">
+        </mat-form-field>
+    </form>
+
+</mat-dialog-content>
+
+<mat-divider></mat-divider>
+<div class="footer" fxLayout="row" fxLayoutAlign="space-between center">
+    <button class="button" mat-button [mat-dialog-close]>Cancel</button>
+    <button [disabled]="!transactionForm.valid" (click)="submit()" mat-button class="button button-bg-color-yellow">Submit</button>
+</div>

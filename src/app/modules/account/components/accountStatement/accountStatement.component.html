@@ -1,0 +1,72 @@
+<div style="width: 100%; margin: 20px;" fxLayout="column" fxLayoutAlign="start start">
+    <div style="width: 100%;" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="25px">
+        <span fxFlex="40" style="font-weight: bold; font-size: 20px; line-height: 50px;">Account Number :</span>
+        <mat-form-field class="form-field" fxFlex="30" appearance="outline">
+            <mat-label>Account Number</mat-label>
+            <input placeholder="Account Number" name="account" matInput [(ngModel)]="account">
+        </mat-form-field>
+        <button  fxFlex="20" (click)="getAcStatement()" mat-button
+            class="button button-bg-color-yellow mt-3">submit</button>
+    </div>
+
+
+    <div *ngIf="isShow">
+        <div class="mt-5 mx-auto" style="text-align: center;">
+            <h5 class="text-success">Account Name : <span style="font-size: 15px;">{{listAcIdentifiers.name}}</span>
+            </h5>
+            <h5 class="text-success ">Account Number : <span style="font-size: 15px;"> {{account}} </span></h5>
+            <h5 class="text-success ">Current Balance : <span style="font-size: 15px;"> {{lsitAcBalances.balance}}.00
+                </span></h5>
+
+        </div>
+        <div style="margin: 0 40px; ">
+            <h2>Account Statement : </h2>
+            <h5>Date : </h5>
+        </div>
+
+
+        <!--start table-->
+        <br>
+        <table class="content-table">
+            <thead>
+                <tr>
+                    <th>TxnTime</th>
+                    <th>Description</th>
+                    <th style="text-align: right;">Debit</th>
+                    <th style="text-align: right;">Credit</th>
+                    <th>TxnType</th>
+                    <th>TxnId</th>
+
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let item of listAcStatement">
+
+                    <td>{{item.txnTime}}</td>
+                    <td>{{item.description}}</td>
+                    <td style="text-align: right;"><span
+                            *ngIf="item.amount!=null && item.amount<0">{{-item.amount}}.00</span></td>
+                    <td style="text-align: right;"><span
+                            *ngIf="item.amount!=null && item.amount>=0">{{item.amount}}.00</span></td>
+                    <td>{{item.txnType}}</td>
+                    <td>{{item.txnId}}</td>
+
+                </tr>
+            </tbody>
+
+            <tbody>
+                <td></td>
+                <td></td>
+                <td style="text-align: right;">Total &nbsp;: &nbsp;{{-totalCredit}}.00 </td>
+                <td style="text-align: right;">Total&nbsp; : &nbsp;{{totalDebit}}.00</td>
+                <td></td>
+                <td></td>
+            </tbody>
+
+        </table>
+
+        <!--end table-->
+    </div>
+
+</div>

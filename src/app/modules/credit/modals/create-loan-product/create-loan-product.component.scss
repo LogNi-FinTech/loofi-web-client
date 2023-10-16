@@ -1,0 +1,89 @@
+:host::ng-deep{
+    .mat-dialog-title{
+        margin: 0px;
+        padding: 10px 20px !important;
+        background-color: rgb(238, 238, 53) !important;
+    }
+    // .mat-dialog-content{
+    //    // height: 355px !important;
+    // }
+    .mat-button {
+        min-height: 30px !important;
+    }
+    .mat-dialog-content{
+        margin: 0px !important;
+        padding: 10px 20px !important;
+    }
+    .form-field{
+        width: 100%;
+    }
+}
+
+.title{
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.footer{
+    margin-bottom: 12px !important;
+}
+
+.close-icon{
+    cursor: pointer;
+}
+
+.close-icon:hover{
+    color: black;
+}
+
+.mat-error{
+    margin-top: -20px;
+    margin-bottom: 10px;
+}
+
+.color-red {
+    color: red;
+}
+
+.button{
+    height: 20px !important;
+    width: 35px;
+    color: black !important;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 4px !important;
+    padding: 5px 50px !important;
+    margin: 10px;
+    margin-bottom: 0px;
+}
+
+.button-bg-color-yellow{
+    background-color: rgb(250, 250, 16) !important;
+}
+
+.field-name {
+    // line-height: 40px;
+    height: 40px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.field-value{
+    line-height: 33px;
+    height: 50px;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.field-name-container {
+    width: 100% !important;
+}
+
+.sub-heading{
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    letter-spacing: 0.2px;
+}
