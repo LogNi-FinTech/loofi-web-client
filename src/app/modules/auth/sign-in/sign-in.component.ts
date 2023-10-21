@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { fuseAnimations } from '@fuse/animations';
 import { FuseAlertType } from '@fuse/components/alert';
 import { AuthService } from 'app/core/auth/auth.service';
+import { WelcomeDetail, WelcomeTitle } from 'app/shared/constant/constant';
 
 @Component({
     selector     : 'auth-sign-in',
@@ -13,7 +14,7 @@ import { AuthService } from 'app/core/auth/auth.service';
 })
 export class AuthSignInComponent implements OnInit
 {
-    @ViewChild('signInNgForm') signInNgForm: NgForm;
+    @ViewChild('signInNgForm') signInNgForm: NgForm; 
 
     alert: { type: FuseAlertType; message: string } = {
         type   : 'success',
@@ -21,6 +22,8 @@ export class AuthSignInComponent implements OnInit
     };
     signInForm: FormGroup;
     showAlert: boolean = false;
+    public welcomeTitle = WelcomeTitle; 
+    public welcomeDetail = WelcomeDetail;
 
     /**
      * Constructor

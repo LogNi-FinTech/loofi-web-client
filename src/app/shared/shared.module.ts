@@ -22,6 +22,8 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { GeneralInfoComponent } from './components/general-info/general-info.component';
+import { ViewDetailComponent } from './modal/view-detail/view-detail.component';
 
 
 @NgModule({
@@ -79,10 +81,15 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
         MatDatepickerModule,
         MatNativeDateModule,
         MatChipsModule,
-        MatProgressSpinnerModule
+        MatProgressSpinnerModule,
+        GeneralInfoComponent,
+        ViewDetailComponent
     ],
     declarations: [
-      FeatureGuardComponent
+      FeatureGuardComponent,
+      GeneralInfoComponent,
+      GeneralInfoComponent,
+      ViewDetailComponent
     ]
 })
 export class SharedModule
