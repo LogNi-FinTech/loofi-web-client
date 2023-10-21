@@ -104,34 +104,34 @@ export class AuthService
             return throwError('User is already logged in.');
         }
 
-        const subject = new Subject();
-        setTimeout(()=>{
-            //this.accessToken = "xxxxx.yyyyy.zzzzz";
-            this.userRole = "MAKER";
-            this.userId = "1";
-            this._authenticated = true;
-            this.userIdentifier = credentials.identifier;
-            subject.next({userId: "1", accessToken: "xxxxx.yyyyy.zzzzz", role: "CHECKER"});
-        },10);
-        return subject.asObservable();
+        // const subject = new Subject();
+        // setTimeout(()=>{
+        //     //this.accessToken = "xxxxx.yyyyy.zzzzz";
+        //     this.userRole = "MAKER";
+        //     this.userId = "1";
+        //     this._authenticated = true;
+        //     this.userIdentifier = credentials.identifier;
+        //     subject.next({userId: "1", accessToken: "xxxxx.yyyyy.zzzzz", role: "CHECKER"});
+        // },10);
+        // return subject.asObservable();
 
-        // return this._httpClient.post(`${authServiceBaseUrl}api/check/auth`, credentials, {responseType: 'text'}).pipe(
-        //     switchMap((response: any) => {
+        return this._httpClient.post(`${authServiceBaseUrl}api/check/auth`, credentials, {responseType: 'text'}).pipe(
+            switchMap((response: any) => {
 
-        //         // Store the access token in the local storage
-        //         this.accessToken = response;
-        //         // Set the authenticated flag to true
-        //         this._authenticated = true;
-        //         return this._httpClient.get(`${authServiceBaseUrl}api/user-info`).pipe(
-        //             switchMap((resObject: any)=>{
-        //                 this.userRole = resObject.roles[0].name;
-         //                this.userIdentifier = credentials.identifier;
-        //                 this.userId = resObject.id;
-        //                 return of(null);
-        //             })
-        //         );
-        //     })
-        // );
+                // Store the access token in the local storage
+                this.accessToken = response;
+                // Set the authenticated flag to true
+                this._authenticated = true;
+                return this._httpClient.get(`${authServiceBaseUrl}api/user-info`).pipe(
+                    switchMap((resObject: any)=>{
+                        this.userRole = resObject.roles[0].name;
+                        this.userIdentifier = credentials.identifier;
+                        this.userId = resObject.id;
+                        return of(null);
+                    })
+                );
+            })
+        );
     }
 
     /**
