@@ -5,6 +5,7 @@ import { fuseAnimations } from '@fuse/animations';
 import { AuthService } from 'app/core/auth/auth.service';
 import { UserService } from 'app/core/user/user.service';
 import { FuseAlertType } from '@fuse/components/alert';
+import { WelcomeDetail, WelcomeTitle } from 'app/shared/constant/constant';
 
 @Component({
     selector     : 'auth-unlock-session',
@@ -24,6 +25,8 @@ export class AuthUnlockSessionComponent implements OnInit
     showAlert: boolean = false;
     unlockSessionForm: FormGroup;
     private _email: string;
+    public welcomeTitle = WelcomeTitle; 
+    public welcomeDetail = WelcomeDetail;
 
     /**
      * Constructor

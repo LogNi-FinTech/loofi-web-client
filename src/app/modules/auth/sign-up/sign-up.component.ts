@@ -4,13 +4,15 @@ import { Router } from '@angular/router';
 import { fuseAnimations } from '@fuse/animations';
 import { FuseAlertType } from '@fuse/components/alert';
 import { AuthService } from 'app/core/auth/auth.service';
+import { WelcomeDetail, WelcomeTitle } from 'app/shared/constant/constant';
 import { debounceTime } from 'rxjs/operators';
 
 @Component({
     selector: 'auth-sign-up',
     templateUrl: './sign-up.component.html',
-    encapsulation: ViewEncapsulation.None,
-    animations: fuseAnimations
+    styleUrls: ['./sign-up.component.scss'],
+   // encapsulation: ViewEncapsulation.None,
+   // animations: fuseAnimations
 })
 export class AuthSignUpComponent implements OnInit {
     @ViewChild('signUpNgForm') signUpNgForm: NgForm;
@@ -22,6 +24,8 @@ export class AuthSignUpComponent implements OnInit {
     signUpForm: FormGroup;
     showAlert: boolean = false;
     public isIdNumberExist: boolean = false;
+    public welcomeTitle = WelcomeTitle; 
+    public welcomeDetail = WelcomeDetail;
 
     /**
      * Constructor
@@ -58,14 +62,24 @@ export class AuthSignUpComponent implements OnInit {
 
     initSignUpForm() {
         this.signUpForm = this._formBuilder.group({
-            identifier: ['Test', Validators.required],
-            firstName: ['Md Ibrahim Khan', Validators.required],
-            idNumber: ['0008888', Validators.required],
-            idType: ['NID'],
-            credential: ['11@asS00000', Validators.required],
-            email: ['test@gmail.com'],
-        }
-        );
+            identifier: ['', Validators.required],
+            firstName: ['', Validators.required],
+            idNumber: ['', Validators.required],
+            idType: [''],
+            credential: ['', Validators.required],
+            email: [''],
+            mobileNo: [''],
+        });
+
+        // this.signUpForm = this._formBuilder.group({
+        //     identifier: ['Test', Validators.required],
+        //     firstName: ['Md Ibrahim Khan', Validators.required],
+        //     idNumber: ['0008888', Validators.required],
+        //     idType: ['NID'],
+        //     credential: ['11@asS00000', Validators.required],
+        //     email: ['test@gmail.com'],
+        // }
+        // );
     }
 
     // -----------------------------------------------------------------------------------------------------

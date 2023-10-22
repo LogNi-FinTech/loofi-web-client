@@ -1,5 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { fuseAnimations } from '@fuse/animations';
+import { WelcomeDetail, WelcomeTitle } from 'app/shared/constant/constant';
 
 @Component({
     selector     : 'auth-confirmation-required',
@@ -9,6 +10,8 @@ import { fuseAnimations } from '@fuse/animations';
 })
 export class AuthConfirmationRequiredComponent
 {
+    public welcomeTitle = WelcomeTitle; 
+    public welcomeDetail = WelcomeDetail;
     /**
      * Constructor
      */

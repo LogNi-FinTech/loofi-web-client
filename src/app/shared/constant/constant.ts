@@ -69,4 +69,35 @@ export const Services = [
         selectedImage: "Wealth_White",
         isSelected: false
     }
-]
+];  
+
+export const OperatorTypes = [
+    {
+        name: "Banglalink",
+        img: "1.png",
+        isSelected: false
+    },
+    {
+        name: "Grameenphone",
+        img: "2.png",
+        isSelected: false
+    },
+    {
+        name: "Airtel",
+        img: "3.png",
+        isSelected: true
+    },
+    {
+        name: "Robi",
+        img: "4.png",
+        isSelected: false
+    },
+    {
+        name: "Teletalk",
+        img: "5.png",
+        isSelected: false
+    }
+];
+
+export const WelcomeTitle = "Welcome to LooFi Digital Banking/Wallet";
+export const WelcomeDetail = "LooFi is OpenSource Digital Wallet/Banking. If you want to implement or  customise it Please contact with us. <br> Email:lognifintech@gmail.com  <br>  Phone:+8801778455963";

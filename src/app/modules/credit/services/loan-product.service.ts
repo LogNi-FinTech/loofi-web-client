@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { accountServiceBaseUrl, creditServiceBaseUrl, kycServiceBaseUrl } from 'app/shared/constant/baseUrl';
+import { accountServiceBaseUrl, creditServiceBaseUrl, kycServiceBaseUrl } from 'app/shared/constant/constant';
 import { Observable } from 'rxjs';
 
 @Injectable({
