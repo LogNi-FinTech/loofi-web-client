@@ -4,6 +4,7 @@ import { finalize } from 'rxjs/operators';
 import { fuseAnimations } from '@fuse/animations';
 import { FuseAlertType } from '@fuse/components/alert';
 import { AuthService } from 'app/core/auth/auth.service';
+import { WelcomeDetail, WelcomeTitle } from 'app/shared/constant/constant';
 
 @Component({
     selector     : 'auth-forgot-password',
@@ -21,6 +22,8 @@ export class AuthForgotPasswordComponent implements OnInit
     };
     forgotPasswordForm: FormGroup;
     showAlert: boolean = false;
+    public welcomeTitle = WelcomeTitle; 
+    public welcomeDetail = WelcomeDetail;
 
     /**
      * Constructor

@@ -5,7 +5,8 @@ import { HomeService } from '../../services/home.service';
 import { DatePipe } from '@angular/common';
 import { take } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
-import { ViewDetailComponent } from '../../Modal/view-detail/view-detail.component';
+import { ViewDetailComponent } from '../../../../shared/modal/view-detail/view-detail.component';
+import { UserService } from 'app/shared/service/user.service';
 
 @Component({
   selector: 'app-home-page',
@@ -34,20 +35,21 @@ export class HomePageComponent implements OnInit {
   filterTransaction : FormGroup;
   public transactions: any[];
   public storedTransactions: any[];
-  private identifier: string = "01674242986";
+  private identifier: string;
   public accountInfo: any;
   public balanceInfo: any;
   public isLoading: boolean = true;
 
   constructor(private breakpointObserver: BreakpointObserver,
     private homeService: HomeService,
-    private datePipe: DatePipe,
-    private dialog: MatDialog) { }
+    private userService: UserService,
+    private datePipe: DatePipe) { }
 
   ngOnInit(): void {
+    this.identifier =  this.userService.getIdentifier();
     this.initializeForm();
     this.subscribeToBreakPoint();
-    this.getAccountInfo();
+    this.getTransactions();
     setTimeout(() => {
       this.filterTransaction.get("filterTransactionControl").valueChanges.subscribe((data) => {
         console.log('Selected Value:', data);
@@ -64,33 +66,19 @@ export class HomePageComponent implements OnInit {
     });
   }
 
-  getAccountInfo(){
-    this.homeService.getAccountInfo(this.identifier).pipe(take(1)).subscribe(accountInfo => {
-      this.accountInfo = accountInfo;
-      this.getBalanceInfo();
-    })
-  }
+  // getAccountInfo(){
+  //   this.homeService.getAccountInfo(this.identifier).pipe(take(1)).subscribe(accountInfo => {
+  //     this.accountInfo = accountInfo;
+  //     this.getBalanceInfo();
+  //   })
+  // }
 
-  public openViewModal(){
-    let subscribe = this.dialog.open(ViewDetailComponent, {
-     // width: '550px',
-      panelClass: 'app-full-bleed-dialog',
-      data: {
-        balanceInfo: this.balanceInfo,
-        accountInfo: this.accountInfo
-      },
-    });
-    subscribe.afterClosed().subscribe(data=>{
-
-    });
-  }
-
-  getBalanceInfo(){
-    this.homeService.getBalanceInfo(this.identifier).pipe(take(1)).subscribe(balanceInfo => {
-      this.balanceInfo = balanceInfo;
-      this.getTransactions();
-    });
-  }
+  // getBalanceInfo(){
+  //   this.homeService.getBalanceInfo(this.identifier).pipe(take(1)).subscribe(balanceInfo => {
+  //     this.balanceInfo = balanceInfo;
+  //     this.getTransactions();
+  //   });
+  // }
   
   private getTransactions(){
     this.homeService.getTransactions(this.identifier).pipe(take(1)).subscribe(transactions => {

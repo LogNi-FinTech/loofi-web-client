@@ -32,9 +32,10 @@
                 class="mt-8"
                 [formGroup]="signUpForm">
 
-                <mat-form-field class="w-full">
+
+                <mat-form-field class="w-full" floatLabel="always">
                     <mat-label>Identifier</mat-label>
-                    <input
+                    <input placeholder="Identifier"
                         id="name"
                         matInput
                         [formControlName]="'identifier'">
@@ -46,9 +47,9 @@
                 </mat-form-field>
 
                 <!-- Name field -->
-                <mat-form-field class="w-full">
+                <mat-form-field class="w-full" floatLabel="always">
                     <mat-label>Full name</mat-label>
-                    <input
+                    <input placeholder="Name"
                         id="name"
                         matInput
                         [formControlName]="'firstName'">
@@ -58,9 +59,9 @@
                 </mat-form-field>
 
 
-                <mat-form-field class="w-full">
+                <mat-form-field class="w-full" floatLabel="always">
                     <mat-label>IdNumber</mat-label>
-                    <input
+                    <input placeholder="Id Number"
                         id="name"
                         matInput
                         [formControlName]="'idNumber'">
@@ -74,7 +75,6 @@
                 <mat-form-field class="w-full" appearance="outline">
                     <mat-label>Id Type</mat-label>
                     <mat-select formControlName="idType" >
-                        <!-- <mat-option *ngFor="let value of idTypes" [value]="value">{{value}}</mat-option> -->
                         <mat-option value="NID">{{'NID'}}</mat-option>
                         <mat-option value="PASSPORT">{{'PASSPORT'}}</mat-option>
                         <mat-option value="DRIVING_LICENCE">{{'DRIVING_LICENCE'}}</mat-option>
@@ -83,9 +83,9 @@
                 </mat-form-field>
 
                 <!-- Email field -->
-                <mat-form-field class="w-full">
+                <mat-form-field class="w-full" floatLabel="always">
                     <mat-label>Email address</mat-label>
-                    <input
+                    <input placeholder="Email"
                         id="email"
                         matInput
                         [formControlName]="'email'">
@@ -95,29 +95,27 @@
                     <mat-error *ngIf="signUpForm.get('email').hasError('email')">
                         Please enter a valid email address
                     </mat-error>
-                </mat-form-field>
-
-                <!-- Password field -->
-                <mat-form-field class="w-full">
+                    </mat-form-field>
+                    
+                    <!-- mobileNo field -->
+                    <mat-form-field class="w-full" floatLabel="always">
+                        <mat-label>Mobile No</mat-label>
+                        <input placeholder="Mobile No" id="Mobile No" matInput [formControlName]="'mobileNo'">
+                        <mat-error *ngIf="signUpForm.get('mobileNo').hasError('required')">
+                            Mobile No is required
+                        </mat-error>
+                    </mat-form-field>
+                    
+                    <!-- Password field -->
+                    <mat-form-field class="w-full" floatLabel="always">
                     <mat-label>Password</mat-label>
-                    <input
-                        id="credential"
-                        matInput
-                        type="password"
-                        [formControlName]="'credential'"
-                        #passwordField>
-                    <button
-                        mat-icon-button
-                        type="button"
-                        (click)="passwordField.type === 'credential' ? passwordField.type = 'text' : passwordField.type = 'credential'"
+                    <input placeholder="Password" id="credential" matInput type="password" [formControlName]="'credential'" #passwordField>
+                    <button mat-icon-button type="button"
+                        (click)="passwordField.type === 'password' ? passwordField.type = 'text' : passwordField.type = 'password'"
                         matSuffix>
-                        <mat-icon
-                            class="icon-size-5"
-                            *ngIf="passwordField.type === 'credential'"
+                        <mat-icon class="icon-size-5" *ngIf="passwordField.type === 'password'"
                             [svgIcon]="'heroicons_solid:eye'"></mat-icon>
-                        <mat-icon
-                            class="icon-size-5"
-                            *ngIf="passwordField.type === 'text'"
+                        <mat-icon class="icon-size-5" *ngIf="passwordField.type === 'text'"
                             [svgIcon]="'heroicons_solid:eye-off'"></mat-icon>
                     </button>
                     <mat-error>
@@ -185,12 +183,9 @@
         <!-- Content -->
         <div class="z-10 relative w-full max-w-2xl">
             <div class="text-7xl font-bold leading-none text-gray-100">
-                <div>Welcome to</div>
-                <div>our community</div>
+                <div [innerHTML]="welcomeTitle"></div>
             </div>
-            <div class="mt-6 text-lg tracking-tight leading-6 text-gray-400">
-                Fuse helps developers to build organized and well coded dashboards full of beautiful and rich modules.
-                Join us and start building your application today.
+            <div [innerHTML]="welcomeDetail" class="mt-6 text-lg tracking-tight leading-6 text-gray-400">
             </div>
         </div>
     </div>

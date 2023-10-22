@@ -5,6 +5,7 @@ import { fuseAnimations } from '@fuse/animations';
 import { FuseValidators } from '@fuse/validators';
 import { FuseAlertType } from '@fuse/components/alert';
 import { AuthService } from 'app/core/auth/auth.service';
+import { WelcomeDetail, WelcomeTitle } from 'app/shared/constant/constant';
 
 @Component({
     selector     : 'auth-reset-password',
@@ -22,6 +23,8 @@ export class AuthResetPasswordComponent implements OnInit
     };
     resetPasswordForm: FormGroup;
     showAlert: boolean = false;
+    public welcomeTitle = WelcomeTitle; 
+    public welcomeDetail = WelcomeDetail;
 
     /**
      * Constructor

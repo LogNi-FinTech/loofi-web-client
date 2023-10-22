@@ -2,9 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, Subject, throwError } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
-import { AuthUtils } from 'app/core/auth/auth.utils';
 import { UserService } from 'app/core/user/user.service';
-import { accountServiceBaseUrl, authServiceBaseUrl, kycServiceBaseUrl } from 'app/shared/constant/baseUrl';
+import { accountServiceBaseUrl, authServiceBaseUrl, kycServiceBaseUrl } from 'app/shared/constant/constant';
 
 @Injectable()
 export class AuthService
@@ -47,6 +46,19 @@ export class AuthService
     set userRole(roleName: string)
     {
         localStorage.setItem('role', roleName);
+    }
+
+    set userIdentifier(identifier: string)
+    {
+        localStorage.setItem('identifier', identifier);
+    }
+
+    get userIdentifier(): string
+    {
+        if(localStorage.getItem('identifier') == "undefined"){
+            return null;
+        }
+        return localStorage.getItem('identifier') ?? null;
     }
 
     set userId(id: string)
@@ -94,10 +106,11 @@ export class AuthService
 
         // const subject = new Subject();
         // setTimeout(()=>{
-        //     this.accessToken = "xxxxx.yyyyy.zzzzz";
+        //     //this.accessToken = "xxxxx.yyyyy.zzzzz";
         //     this.userRole = "MAKER";
         //     this.userId = "1";
         //     this._authenticated = true;
+        //     this.userIdentifier = credentials.identifier;
         //     subject.next({userId: "1", accessToken: "xxxxx.yyyyy.zzzzz", role: "CHECKER"});
         // },10);
         // return subject.asObservable();
@@ -112,6 +125,7 @@ export class AuthService
                 return this._httpClient.get(`${authServiceBaseUrl}api/user-info`).pipe(
                     switchMap((resObject: any)=>{
                         this.userRole = resObject.roles[0].name;
+                        this.userIdentifier = credentials.identifier;
                         this.userId = resObject.id;
                         return of(null);
                     })
