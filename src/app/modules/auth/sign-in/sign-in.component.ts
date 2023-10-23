@@ -53,8 +53,8 @@ export class AuthSignInComponent implements OnInit
         //     rememberMe: ['']
         // });
         this.signInForm = this._formBuilder.group({
-            identifier     : ['01674242986', [Validators.required]],
-            credential  : ['1', Validators.required],
+            identifier     : ['', [Validators.required]],
+            credential  : ['', Validators.required],
             rememberMe: ['']
         });
     }
