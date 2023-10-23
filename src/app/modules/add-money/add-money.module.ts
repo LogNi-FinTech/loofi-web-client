@@ -4,6 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from 'app/shared/shared.module';
 import { LandingComponent } from './components/landing/landing.component';
 
+
+
 const routes: Routes = [
   // { path: '', pathMatch: 'full', redirectTo: "page"},
   { path: '', pathMatch: 'full', component:  LandingComponent},
@@ -20,4 +22,4 @@ const routes: Routes = [
     SharedModule,
   ]
 })
-export class CreditModule { }
+export class AddMoneyModule { }
