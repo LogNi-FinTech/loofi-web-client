@@ -97,42 +97,6 @@ export const appRoutes: Route[] = [
             initialData: InitialDataResolver,
         },
         children   : [
-            {path: 'transaction', loadChildren: () => import('app/modules/transaction/transaction.module').then(m => m.TransactionModule)},
-        ]
-    },
-    {
-        path       : '',
-        canActivate: [AuthGuard],
-        canActivateChild: [AuthGuard],
-        component  : LayoutComponent,
-        resolve    : {
-            initialData: InitialDataResolver,
-        },
-        children   : [
-            {path: 'account', loadChildren: () => import('app/modules/account/account.module').then(m => m.AccountModule)},
-        ]
-    },
-    {
-        path       : '',
-        canActivate: [AuthGuard],
-        canActivateChild: [AuthGuard],
-        component  : LayoutComponent,
-        resolve    : {
-            initialData: InitialDataResolver,
-        },
-        children   : [
-            {path: 'registration', loadChildren: () => import('app/modules/registration/registration.module').then(m => m.RegistrationModule)},
-        ]
-    },
-    {
-        path       : '',
-        canActivate: [AuthGuard],
-        canActivateChild: [AuthGuard],
-        component  : LayoutComponent,
-        resolve    : {
-            initialData: InitialDataResolver,
-        },
-        children   : [
             {path: 'mobile-recharge', loadChildren: () => import('app/modules/mobile-recharge/mobile-recharge.module').then(m => m.MobileRechargeModule)},
         ]
     },
@@ -145,7 +109,79 @@ export const appRoutes: Route[] = [
             initialData: InitialDataResolver,
         },
         children   : [
+            {path: 'add-money', loadChildren: () => import('app/modules/add-money/add-money.module').then(m => m.AddMoneyModule)},
+        ]
+    },
+    {
+        path       : '',
+        canActivate: [AuthGuard],
+        canActivateChild: [AuthGuard],
+        component  : LayoutComponent,
+        resolve    : {
+            initialData: InitialDataResolver,
+        },
+        children   : [
+            {path: 'pay-bill', loadChildren: () => import('app/modules/pay-bill/pay-bill.module').then(m => m.PayBillModule)},
+        ]
+    }, 
+    {
+        path       : '',
+        canActivate: [AuthGuard],
+        canActivateChild: [AuthGuard],
+        component  : LayoutComponent,
+        resolve    : {
+            initialData: InitialDataResolver,
+        },
+        children   : [
             {path: 'credit', loadChildren: () => import('app/modules/credit/credit.module').then(m => m.CreditModule)},
+        ]
+    },
+    {
+        path       : '',
+        canActivate: [AuthGuard],
+        canActivateChild: [AuthGuard],
+        component  : LayoutComponent,
+        resolve    : {
+            initialData: InitialDataResolver,
+        },
+        children   : [
+            {path: 'bank-transfer', loadChildren: () => import('app/modules/bank-transfer/bank-transfer.module').then(m => m.BankTransferModule)},
+        ]
+    },   
+    {
+        path       : '',
+        canActivate: [AuthGuard],
+        canActivateChild: [AuthGuard],
+        component  : LayoutComponent,
+        resolve    : {
+            initialData: InitialDataResolver,
+        },
+        children   : [
+            {path: 'payment', loadChildren: () => import('app/modules/payment/payment.module').then(m => m.PaymentModule)},
+        ]
+    },  
+    {
+        path       : '',
+        canActivate: [AuthGuard],
+        canActivateChild: [AuthGuard],
+        component  : LayoutComponent,
+        resolve    : {
+            initialData: InitialDataResolver,
+        },
+        children   : [
+            {path: 'send-money', loadChildren: () => import('app/modules/send-money/send-money.module').then(m => m.SendMoneyModule)},
+        ]
+    },
+    {
+        path       : '',
+        canActivate: [AuthGuard],
+        canActivateChild: [AuthGuard],
+        component  : LayoutComponent,
+        resolve    : {
+            initialData: InitialDataResolver,
+        },
+        children   : [
+            {path: 'wealth', loadChildren: () => import('app/modules/wealth/wealth.module').then(m => m.WealthModule)},
         ]
     }
 ];
