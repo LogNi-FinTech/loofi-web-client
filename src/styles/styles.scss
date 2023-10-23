@@ -45,7 +45,17 @@
     color: white !important;
 }
 
+.loofi-icon{
+    width: 200px !important;
+    height: 50px !important;
+    max-width: 200px !important;
+}
 
+@media screen and (max-width: 560px) {
+    .loofi-icon{
+        margin: auto;
+    }
+}
 // @import '~@angular/material/theming';
 
 // @include mat-core();
