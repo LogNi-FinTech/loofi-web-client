@@ -33,7 +33,6 @@ export class UserService {
   }
 
   public getAccountInfo(identifier: string){
-    debugger
     return this._httpClient.get<any>(this.getAccountInfoUrl+identifier, {
       headers: new HttpHeaders({ 'Content-Type': 'application/json', }),
     });

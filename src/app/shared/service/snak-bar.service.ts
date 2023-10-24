@@ -10,7 +10,7 @@ export class SnakBarService {
 
   showMessage(message){
     this._snackBar.open(message, '', {
-      duration: 400
+      duration: 600
     });
   }
 }

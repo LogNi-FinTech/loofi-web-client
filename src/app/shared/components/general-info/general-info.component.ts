@@ -22,7 +22,6 @@ export class GeneralInfoComponent implements OnInit {
     private dialog: MatDialog) { }
 
   ngOnInit(): void {
-    debugger;
     this.identifier =  this.userService.getIdentifier();
     this.subscribeToBreakPoint();
     this.getAccountInfo();
