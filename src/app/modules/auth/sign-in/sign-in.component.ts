@@ -47,16 +47,16 @@ export class AuthSignInComponent implements OnInit
     ngOnInit(): void
     {
         // Create the form
-        // this.signInForm = this._formBuilder.group({
-        //     identifier     : ['01674242986', [Validators.required]],
-        //     credential  : ['11@asS0000011', Validators.required],
-        //     rememberMe: ['']
-        // });
         this.signInForm = this._formBuilder.group({
-            identifier     : ['01674242986', [Validators.required]],
-            credential  : ['asS0000011', Validators.required],
+            identifier     : ['', [Validators.required]],
+            credential  : ['', Validators.required],
             rememberMe: ['']
         });
+        // this.signInForm = this._formBuilder.group({
+        //     identifier     : ['01674242986', [Validators.required]],
+        //     credential  : ['asS0000011', Validators.required],
+        //     rememberMe: ['']
+        // });
     }
 
     // -----------------------------------------------------------------------------------------------------
