@@ -1,7 +1,8 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { OperatorTypes } from 'app/shared/constant/constant';
+import { AuthService } from 'app/core/auth/auth.service';
+import { OperatorTypes, TxnCode } from 'app/shared/constant/constant';
 import { SnakBarService } from 'app/shared/service/snak-bar.service';
 import { TransactionService } from 'app/shared/service/transaction.service';
 import { take } from 'rxjs/operators';
@@ -20,7 +21,8 @@ export class LandingComponent implements OnInit {
   constructor(private breakpointObserver: BreakpointObserver,
     private formBuilder: FormBuilder,
     private transactionService: TransactionService,
-    private snackBar: SnakBarService) { }
+    private snackBar: SnakBarService,
+    private authService: AuthService) { }
 
   ngOnInit(): void {
     this.initializeForm();
@@ -29,7 +31,7 @@ export class LandingComponent implements OnInit {
 
   private initializeForm(){
     this.mobileRecharge = this.formBuilder.group({
-      number: ['', [Validators.required]],
+      toAc: ['', [Validators.required]],
       amount: ['', [Validators.required]],
       accountType: [''],
       operatorType: ['Airtel', [Validators.required]],
@@ -40,17 +42,33 @@ export class LandingComponent implements OnInit {
     debugger;
     if (!this.mobileRecharge.valid) {
       //this.mobileRecharge.markAsTouched();
-      this.mobileRecharge.get("number").markAsTouched();
+      this.mobileRecharge.get("toAc").markAsTouched();  // 01674242921
       this.mobileRecharge.get("amount").markAsTouched();
       return;
     }
 
     this.isLoading = true;
-    this.transactionService.mobileRecharge(this.mobileRecharge.getRawValue()).pipe(take(1)).subscribe(data=>{
-      this.snackBar.showMessage("Successfully recharged");
+    const parameterValue = this.getParameterValue();
+    this.transactionService.mobileRecharge(this.transactionService.getTransactionPayload(parameterValue)).pipe(take(1)).subscribe(data=>{
+      this.snackBar.showMessage("Successfully Recharged", 2000);
+      this.transactionService.getAccountInformation.next();
       this.isLoading = false;
+      this.mobileRecharge.reset();
     })
   }
+  
+  private getParameterValue(){
+    debugger;
+    const identifier = this.authService.userIdentifier;
+    const formValue = this.mobileRecharge.getRawValue();
+    const txnCode = TxnCode.MobileRecharge;
+    return {
+      identifier,
+      ...formValue,
+      txnCode
+    }
+  }
+
 
   private subscribeToBreakPoint(){
     this.breakpointObserver

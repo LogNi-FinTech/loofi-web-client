@@ -48,8 +48,10 @@ export class LandingComponent implements OnInit {
     this.isLoading = true;
     const parameterValue = this.getParameterValue();
     this.transactionService.doTransaction(this.transactionService.getTransactionPayload(parameterValue)).pipe(take(1)).subscribe(data=>{
-      this.snackBar.showMessage("Successfully recharged");
+      this.snackBar.showMessage("Successfully Send", 2000);
       this.isLoading = false;
+      this.transactionService.getAccountInformation.next();
+      this.mobileRecharge.reset();
     })
   }
 

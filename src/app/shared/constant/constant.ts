@@ -121,5 +121,6 @@ export const TransactionObject = {
 export enum TxnCode {
     SendMoney = 1201,
     Payment = 1202,
-    AddMoney = 103
+    AddMoney = 103,
+    MobileRecharge = 1202
 }

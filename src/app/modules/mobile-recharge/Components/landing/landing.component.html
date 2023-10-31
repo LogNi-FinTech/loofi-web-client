@@ -6,7 +6,7 @@
     </div>
     <div class="underline"></div>
 
-    <form [formGroup]="mobileRecharge" (ngSubmit)="onSubmit()">
+    <form [formGroup]="mobileRecharge">
         <div class="form-container">
             <div fxLayout="column" fxLayoutAlign="space-between center" fxLayoutGap="20px">
                 <!-- <mat-form-field fxFlex="50" appearance="fill" class="full-width">
@@ -17,8 +17,8 @@
                                     </mat-form-field> -->
                 <div class="w-100p" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center" fxLayoutGap="30px" fxLayoutGap.xs="20px">
                     <div fxFlex="50" fxFlex.xs="100" class="input-container">
-                        <input placeholder="Mobile Number" type="number" id="number" formControlName="number" class="input-field">
-                        <div *ngIf="mobileRecharge.get('number').invalid && mobileRecharge.get('number').touched"
+                        <input placeholder="Mobile Number" type="text" id="number" formControlName="toAc" class="input-field">
+                        <div *ngIf="mobileRecharge.get('toAc').invalid && mobileRecharge.get('toAc').touched"
                             class="text-danger">
                             Please enter number.
                         </div>

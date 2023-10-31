@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { accountServiceBaseUrl } from '../constant/constant';
 
 @Injectable({
@@ -8,7 +8,8 @@ import { accountServiceBaseUrl } from '../constant/constant';
 })
 export class TransactionService {
 
-  private mobileRechargeUrl = accountServiceBaseUrl + "api/v1/account/";
+  public getAccountInformation = new Subject();
+  private mobileRechargeUrl = accountServiceBaseUrl + "api/v1/txn";
   private transactionUrl = accountServiceBaseUrl + "api/v1/txn";
 
   constructor(private _httpClient: HttpClient) { }
