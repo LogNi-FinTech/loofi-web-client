@@ -101,3 +101,26 @@ export const OperatorTypes = [
 
 export const WelcomeTitle = "Welcome to LooFi Digital Banking/Wallet";
 export const WelcomeDetail = "LooFi is OpenSource Digital Wallet/Banking. If you want to implement or  customise it Please contact with us. <br> Email:lognifintech@gmail.com  <br>  Phone:+8801778455963";
+
+export const TransactionObject = {
+    "fromAc": "",
+    "toAc": "",
+    "amount": "",
+    "transactionType": {"txnCode": 1201},
+    "note": "",
+    "referenceId": "6411-AZOM",
+    "tag": "TEST",
+    "data": {"reason": "Joma"},
+    "description": " ",
+    "channel": "REST",
+    "requestId": "3886735",
+    "maker": "TEST",
+    "checker": "TEST"
+};
+
+export enum TxnCode {
+    SendMoney = 1201,
+    Payment = 1202,
+    AddMoney = 103,
+    MobileRecharge = 1202
+}

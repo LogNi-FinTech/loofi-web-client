@@ -8,9 +8,9 @@ export class SnakBarService {
 
   constructor(private _snackBar: MatSnackBar) { }
 
-  showMessage(message){
+  showMessage(message, duration = 600){
     this._snackBar.open(message, '', {
-      duration: 400
+      duration: duration
     });
   }
 }

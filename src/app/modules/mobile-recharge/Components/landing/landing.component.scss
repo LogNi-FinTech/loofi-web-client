@@ -1,8 +1,9 @@
 .action-title{
-    margin-left: 40px;
+    width: calc(100% - 80px);
     font-size: 16px;
     font-family: 'Varela Round', sans-serif;
     font-weight: 600;
+    margin: auto;
 }
 
 .underline{
@@ -62,6 +63,47 @@ input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   appearance: none;
   margin: 0; /* Optional: You can adjust the margin to control spacing */
+}
+
+.progress-bar{
+    width: calc(100% - 80px) !important;
+    margin: auto;
+}
+
+@media screen and (max-width: 560px) {
+
+    .form-container{
+        width: calc(100% - 5%);
+    }
+    .action-title, .underline{
+       // margin-left: 0px;
+        width: calc(100% - 16px);
+    }
+
+    .progress-bar{
+        width: calc(100% - 5%) !important;
+    }
+
+    .input-container{
+        width: 100% !important;
+    }
+
+    .all-content-container{
+        margin-top: 12px;
+    }
+
+    .submit{
+        width: 100%;
+    }
+
+    .operator {
+        margin-bottom: 10px;
+    }
+
+    .operator-title{
+        font-size: 13px;
+        letter-spacing: 0px;
+    }
 }
 
 // ::ng-deep .mat-form-field-appearance-outline.mat-form-field-disabled, ::ng-deep .mat-form-field-outline {

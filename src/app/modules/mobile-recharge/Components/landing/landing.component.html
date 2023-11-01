@@ -1,10 +1,12 @@
-<div class="w-100p">
+
+<div class="w-100p all-content-container">
+    <mat-progress-bar class="progress-bar" *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
     <div class="action-title">
         Mobile Recharge
     </div>
     <div class="underline"></div>
 
-    <form [formGroup]="mobileRecharge" (ngSubmit)="onSubmit()">
+    <form [formGroup]="mobileRecharge">
         <div class="form-container">
             <div fxLayout="column" fxLayoutAlign="space-between center" fxLayoutGap="20px">
                 <!-- <mat-form-field fxFlex="50" appearance="fill" class="full-width">
@@ -13,27 +15,28 @@
                                             Mobile Number is required.
                                         </mat-error>
                                     </mat-form-field> -->
-                <div class="w-100p" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="30px">
-                    <div fxFlex="50">
-                        <input placeholder="Mobile Number" type="number" id="number" formControlName="number" class="input-field">
-                        <div *ngIf="mobileRecharge.get('number').invalid && mobileRecharge.get('number').touched"
+                <div class="w-100p" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center" fxLayoutGap="30px" fxLayoutGap.xs="20px">
+                    <div fxFlex="50" fxFlex.xs="100" class="input-container">
+                        <input placeholder="Mobile Number" type="text" id="number" formControlName="toAc" class="input-field">
+                        <div *ngIf="mobileRecharge.get('toAc').invalid && mobileRecharge.get('toAc').touched"
                             class="text-danger">
                             Please enter number.
                         </div>
                     </div>
             
-                    <div fxFlex="50">
+                    <div fxFlex="50" fxFlex.xs="100" class="input-container">
                         <input placeholder="Amount" type="number" id="amount" formControlName="amount" class="input-field">
-                        <div *ngIf="mobileRecharge.get('amount').invalid && mobileRecharge.get('amount').touched"
-                            class="text-danger">
-                            Please enter amount.
-                        </div>
+                        <ng-container *ngIf="mobileRecharge.get('amount').invalid && mobileRecharge.get('amount').touched">
+                            <div class="text-danger">
+                                Please enter amount.
+                            </div>
+                        </ng-container>
                     </div>
             
                 </div>
             
-                <div class="operator-container" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="10px">
-                    <div (click)="changeOperator(i)" fxFlex="15" [ngStyle]="{'background': operator.isSelected? '#3063f5' : 'white'}"
+                <div class="operator-container" fxLayout="row wrap" fxLayoutAlign="space-between center" fxLayoutAlign.xs="center center" fxLayoutGap="10px">
+                    <div (click)="changeOperator(i)" fxFlex="15" fxFlex.xs="30" [ngStyle]="{'background': operator.isSelected? '#3063f5' : 'white'}"
                      class="operator" *ngFor="let operator of operatorTypes; let i = index" fxLayout="column"
                         fxLayoutAlign="space-between center" fxLayoutGap="10px">
                         <img class="operator-image" [src]="'assets/operator_icon/' + operator.img">

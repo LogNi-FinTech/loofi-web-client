@@ -56,32 +56,115 @@
         margin: auto;
     }
 }
-// @import '~@angular/material/theming';
 
-// @include mat-core();
 
-// $app-primary: mat-palette($mat-indigo);
-// $app-accent:  mat-palette($mat-pink, A200, A100, A400);
+.action-title{
+    width: calc(100% - 80px);
+    font-size: 16px;
+    font-family: 'Varela Round', sans-serif;
+    font-weight: 600;
+    margin: auto;
+}
 
-// $app-theme: mat-light-theme($app-primary, $app-accent);
+.underline{
+    height: 3.5px;
+    background-color: #3063f5;
+    width: calc(100% - 80px);
+    margin: auto;
+}
 
-// @mixin mix-app-theme($app-theme) {
-//   $primary: map-get($app-theme, primary);
-//   $accent: map-get($app-theme, accent);
+.form-container{
+    width: calc(100% - 30%);
+    margin: auto;
+    margin-top: 20px;
+}
 
-//   .mat-button-toggle {
-//     background-color: mat-color($primary);
-//     color: mat-color($primary, default-contrast);
-//   }
+.input-field{
+    width: 100%;
+    background: white;
+    height: 50px;
+    border-bottom: 2px solid #3063f5;
+    text-align: center;
+}
 
-//   .mat-button-toggle-checked {
-//     background-color: mat-color($accent);
-//     color: mat-color($accent, default-contrast);
-//   }
-// }
+.operator-container{
+    width: 100%;
+}
 
-// // Include the mixin
-// @include mix-app-theme($app-theme);
+.operator{
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: rgba(48,99,245, 0.2) 0px 2px 8px 0px;
+}
+
+.operator-title{
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.operator-image{
+    width: 50%;
+    margin: auto;
+    height: 40px;
+}
+
+.submit{
+    width: 50%;
+}
+
+.text-danger{
+    color: red;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0; /* Optional: You can adjust the margin to control spacing */
+}
+
+.progress-bar{
+    width: calc(100% - 80px) !important;
+    margin: auto;
+}
+
+@media screen and (max-width: 560px) {
+
+    .form-container{
+        width: calc(100% - 5%);
+    }
+    .action-title, .underline{
+       // margin-left: 0px;
+        width: calc(100% - 16px);
+    }
+
+    .progress-bar{
+        width: calc(100% - 5%) !important;
+    }
+
+    .input-container{
+        width: 100% !important;
+    }
+
+    .all-content-container{
+        margin-top: 12px;
+    }
+
+    .submit{
+        width: 100%;
+    }
+
+    .operator {
+        margin-bottom: 10px;
+    }
+
+    .operator-title{
+        font-size: 13px;
+        letter-spacing: 0px;
+    }
+}
 
 
 
