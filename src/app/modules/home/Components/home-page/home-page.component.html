@@ -19,7 +19,7 @@
                 <li fxHide.xs class="table-header" fxLayout="row" fxLayoutAlign="space-between center">
                     <div fxFlex="20" class="col col-1">Account/Wallet</div>
                     <div fxFlex="20" class="col col-2">Transaction Type</div>
-                    <div fxFlex="20" class="col col-3">Amount</div>
+                    <div fxFlex="15" class="col col-3 pr-60" fxLayout="row" fxLayoutAlign="end end">Amount</div>
                     <div fxFlex="20" class="col col-4">Transaction ID</div>
                     <div fxFlex="20" class="col col-4">Date</div>
                 </li>
@@ -47,7 +47,7 @@
                             arrow_circle_down
                         </mat-icon>
                     </div>
-                    <div fxHide.xs fxFlex="20" fxLayout="row" fxLayoutAlign="start center">
+                    <div class="pr-60" fxHide.xs fxFlex="15" fxLayout="row" fxLayoutAlign="end end">
                         <ng-container [ngTemplateOutlet]="transactionIndicator" [ngTemplateOutletContext]="{transaction:transaction}"></ng-container>
                     </div>
                     <div fxHide.xs fxFlex="20">{{transaction.txnId}}</div>
@@ -81,10 +81,10 @@
          [ngClass]="{'red': !transaction.MoneyDirection, 'green': transaction.MoneyDirection}">
       {{ transaction.amount | number: '1.2-2' }}
     </div>
-    <div>
+    <!-- <div>
       <mat-icon [ngClass]="{'red': !transaction.MoneyDirection, 'green': transaction.MoneyDirection}"
                 class="dollar-icon font-w-700 w-14">attach_money</mat-icon>
-    </div>
+    </div> -->
   </ng-template>
   
 

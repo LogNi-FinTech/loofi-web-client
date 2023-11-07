@@ -39,7 +39,6 @@ export class GeneralInfoComponent implements OnInit, OnDestroy {
 
   private subscribeToGetAccountInformation(){
     this.transactionService.getAccountInformation.pipe(takeUntil(this._unsubscribe)).subscribe(data=> {
-      debugger;
       this.getAccountInfo();
     });
   }

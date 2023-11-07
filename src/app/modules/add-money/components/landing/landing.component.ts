@@ -64,7 +64,6 @@ export class LandingComponent implements OnInit, OnDestroy {
   }
 
   private getParameterValue(){
-    debugger
     const formValue = this.formGroup.getRawValue();
     const identifier = formValue.toAc;
     formValue.toAc = this.authService.userIdentifier;

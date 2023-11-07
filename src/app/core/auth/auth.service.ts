@@ -104,16 +104,16 @@ export class AuthService
             return throwError('User is already logged in.');
         }
 
-        // const subject = new Subject();
-        // setTimeout(()=>{
-        //     //this.accessToken = "xxxxx.yyyyy.zzzzz";
-        //     this.userRole = "USER";
-        //     this.userId = "1";
-        //     this._authenticated = true;
-        //     this.userIdentifier = credentials.identifier;
-        //     subject.next({userId: "1", accessToken: "xxxxx.yyyyy.zzzzz", role: "CHECKER"});
-        // },10);
-        // return subject.asObservable(); Implement mobile recharge, pay-bill, payment, add-money, send money
+        const subject = new Subject();
+        setTimeout(()=>{
+            //this.accessToken = "xxxxx.yyyyy.zzzzz";
+            this.userRole = "USER";
+            this.userId = "1";
+            this._authenticated = true;
+            this.userIdentifier = credentials.identifier;
+            subject.next({userId: "1", accessToken: "xxxxx.yyyyy.zzzzz", role: "CHECKER"});
+        },10);
+        return subject.asObservable(); 
 
         return this._httpClient.post(`${authServiceBaseUrl}api/check/auth`, credentials, {responseType: 'text'}).pipe(
             switchMap((response: any) => {

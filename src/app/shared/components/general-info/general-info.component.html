@@ -51,7 +51,7 @@
                     fxLayoutAlign.xs="center center" fxLayoutGap="12px" fxLayoutGap.xs="4px">
                     <mat-icon class="balance-icon">account_balance_wallet</mat-icon>
                     <div class="balance-show">
-                        ${{ balanceInfo.balance | number: '1.2-2' }}
+                        {{ balanceInfo.balance | number: '1.2-2' }}
                     </div>
                 </div>
             </div>
@@ -64,7 +64,7 @@
                     fxLayoutAlign.xs="center center" fxLayoutGap="12px" fxLayoutGap.xs="4px">
                     <mat-icon class="balance-icon">account_balance_wallet</mat-icon>
                     <div class="balance-show">
-                        ${{ balanceInfo && balanceInfo.availableBalance ? balanceInfo.availableBalance :
+                        {{ balanceInfo && balanceInfo.availableBalance ? balanceInfo.availableBalance :
                         balanceInfo.balance |
                         number: '1.2-2' }}
                     </div>

@@ -1,0 +1,41 @@
+<div fxFlexLayout="column" class="w-100p container">
+    <mat-icon class="success-icon">verified_user</mat-icon>
+    <div class="success-message">{{data.messageInfo.transactionType}} successful</div>
+    <mat-divider [inset]="true" class="custom-divider applied-circle-design mb-20 extra-hight"></mat-divider>
+
+    <div class="detail-container" fxFlexLayout="row" fxLayoutAlign="space-between center">
+        <div class="key">
+            {{data.messageInfo.transactionType}} amount
+        </div>
+        <div class="value">
+            Tk {{data.messageInfo.amount}}
+        </div>
+    </div>
+    <mat-divider class="custom-divider" [inset]="true"></mat-divider>
+    <div class="detail-container" fxFlexLayout="row" fxLayoutAlign="space-between center">
+        <div class="key">
+            {{data.messageInfo.transactionType}} status
+        </div>
+        <div class="value">
+            {{data.messageInfo.status}} 
+        </div>
+    </div>
+    <mat-divider class="custom-divider" [inset]="true"></mat-divider>
+    <div class="detail-container" fxFlexLayout="row" fxLayoutAlign="space-between center">
+        <div class="key">
+            Transaction Id
+        </div>
+        <div class="value">
+            {{data.messageInfo.txnId}} 
+        </div>
+    </div>
+    <mat-divider class="custom-divider mb-26" [inset]="true"></mat-divider>
+
+    <!-- <mat-divider [inset]="true" class="custom-divider mt-35 mb-20 extra-hight"></mat-divider> -->
+    <button class="submit mb-4" (click)="goHome()" mat-raised-button color="primary">Home</button>
+    <button class="submit black-background mb-20" (click)="back()" mat-raised-button color="primary">Back</button>
+
+    <!-- <div class="circle horizontal-position-left"></div>
+    <div class="circle horizontal-position-right"></div> -->
+</div>
+
