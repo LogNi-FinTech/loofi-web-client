@@ -29,6 +29,10 @@
     border-radius: 10px !important
 }
 
+.general-info .mat-dialog-container {
+    background-color: #f1f5f9 !important;
+}
+
 .mt-14{
     margin-top: 13px !important;
 }
@@ -73,8 +77,16 @@
     margin: auto;
 }
 
+.content{
+    width: calc(100% - 80px);
+    background-color: white;
+    margin: auto;
+    padding-top: 20px;
+    border-radius: 10px;
+}
+
 .form-container{
-    width: calc(100% - 50%);
+    width: calc(100% - 65%);
     margin: auto;
     margin-top: 20px;
 }
@@ -112,6 +124,12 @@
 
 .submit{
     width: 50%;
+    background-color: rgb(88, 125, 228) !important;
+    color: white !important;
+}
+
+.welcome-note{
+    font-size: 30px;
 }
 
 .text-danger{
@@ -130,7 +148,15 @@ input[type="number"]::-webkit-outer-spin-button {
     margin: auto;
 }
 
+// .mat-dialog-container {
+//     background-color: red !important;
+// }
+
 @media screen and (max-width: 560px) {
+
+    form{
+        overflow: scroll;
+    }
 
     .form-container{
         width: calc(100% - 5%);
@@ -138,6 +164,11 @@ input[type="number"]::-webkit-outer-spin-button {
     .action-title, .underline{
        // margin-left: 0px;
         width: calc(100% - 16px);
+    }
+
+    .content{
+        width: calc(100% - 16px);
+        padding-top: 0px;
     }
 
     .progress-bar{

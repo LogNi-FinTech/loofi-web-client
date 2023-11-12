@@ -132,3 +132,5 @@ export enum TransactionType {
     MobileRecharge = "Mobile recharge",
     PayBill = "Pay bill"
 }
+
+export const AddMoneyAccount = '10100';

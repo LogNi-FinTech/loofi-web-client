@@ -1,19 +1,15 @@
 
-<div *ngIf="!showSuccessPage" class="w-100p all-content-container">
+<div class="w-100p all-content-container">
     <mat-progress-bar class="progress-bar" *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
     <div class="action-title">
         Send Money
     </div>
     <div class="underline"></div>
 
-    <button (click)="showToasterError()" class="btn btn-danger">
-        Error Toaster
-    </button>
-
-    <form [formGroup]="mobileRecharge">
+    <form [formGroup]="mobileRecharge" class="content">
         <div class="form-container">
-            <div fxLayout="column" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-                <div class="w-100p" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center" fxLayoutGap="30px" fxLayoutGap.xs="20px">
+            <div fxLayout="column" fxLayoutAlign="space-between center">
+                <!-- <div class="w-100p" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center" fxLayoutGap="30px" fxLayoutGap.xs="20px">
                     <div fxFlex="50" fxFlex.xs="100" class="input-container">
                         <input placeholder="Account Number *" type="text" id="toAc" formControlName="toAc" class="input-field">
                         <div *ngIf="mobileRecharge.get('toAc').invalid && mobileRecharge.get('toAc').touched"
@@ -31,37 +27,43 @@
                         </ng-container>
                     </div>
             
-                </div>
-
-                <!-- <div fxFlex="100" fxFlex.xs="100" class="input-container w-100p">
-                    <input placeholder="Account Number *" type="text" id="toAc" formControlName="toAc" class="input-field">
-                    <div *ngIf="mobileRecharge.get('toAc').invalid && mobileRecharge.get('toAc').touched"
-                        class="text-danger">
-                        Please enter account number.
-                    </div>
-                </div>
-
-                <div fxFlex="100" fxFlex.xs="100" class="input-container w-100p">
-                    <input placeholder="Amount *" type="number" id="amount" formControlName="amount" class="input-field">
-                    <ng-container *ngIf="mobileRecharge.get('amount').invalid && mobileRecharge.get('amount').touched">
-                        <div class="text-danger">
-                            Please enter amount.
-                        </div>
-                    </ng-container>
                 </div> -->
 
-                <div fxFlex="100" fxFlex.xs="100" class="input-container w-100p">
+                <!-- <div fxFlex="100" fxFlex.xs="100" class="input-container w-100p">
                     <input placeholder="Short Note" type="text" id="note" formControlName="note" class="input-field">
-                </div>
+                </div> -->
+
+                <mat-form-field class="w-full" floatLabel="always">
+                    <mat-label>Account Number</mat-label>
+                    <input placeholder="Account Number *"
+                        matInput
+                        [formControlName]="'toAc'">
+                    <mat-error *ngIf="mobileRecharge.get('toAc').hasError('required')">
+                        Please enter account number
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="w-full" floatLabel="always">
+                    <mat-label>Amount</mat-label>
+                    <input placeholder="Amount *"
+                        matInput
+                        [formControlName]="'amount'">
+                    <mat-error *ngIf="mobileRecharge.get('amount').hasError('required')">
+                        Please enter amount
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="w-full" floatLabel="always">
+                    <mat-label>Reference</mat-label>
+                    <input placeholder="Reference"
+                        matInput
+                        [formControlName]="'note'">
+                </mat-form-field>
 
 
-                <button class="submit" (click)="onSubmit()" mat-raised-button color="primary">Confirm</button>
+                <button class="submit" (click)="onSubmit()" mat-raised-button>Confirm</button>
             </div>
 
         </div>
     </form>
-</div>
-
-<div *ngIf="showSuccessPage" style="width: 450px; margin: auto; margin-top: 10px;">
-    <app-success-message  [messageInfo]="messageInfo"></app-success-message>
 </div>

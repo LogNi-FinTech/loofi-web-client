@@ -37,13 +37,13 @@
 
 
                 <mat-form-field class="w-full" floatLabel="always">
-                    <mat-label>Identifier</mat-label>
-                    <input placeholder="Identifier"
+                    <mat-label>Account/Wallet Identifier</mat-label>
+                    <input placeholder="Account/Wallet Identifier"
                         id="name"
                         matInput
                         [formControlName]="'identifier'">
                     <mat-error *ngIf="signUpForm.get('identifier').hasError('required')">
-                        Identifier is required
+                        Account/Wallet Identifier is required
                     </mat-error>
                     <mat-error class="mat-error" *ngIf="signUpForm.get('identifier').hasError('uniqueValueError')"> Identifier already exist
                     </mat-error>

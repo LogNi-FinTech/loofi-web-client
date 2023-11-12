@@ -22,7 +22,6 @@ export class LandingComponent implements OnInit {
   public mobileRecharge: FormGroup;
   public isXsStyleActive: boolean = false;
   public isLoading: boolean = false;
-  public showSuccessPage = false;
   public messageInfo: any = {
     txnId: "",
     status:"",
@@ -45,12 +44,13 @@ export class LandingComponent implements OnInit {
   private initializeForm(){
     this.mobileRecharge = this.formBuilder.group({
       toAc: ['', [Validators.required]],
-      amount: ['500', [Validators.required]],
+      amount: ['', [Validators.required]],
       note: [''],
     });
   }
 
   public onSubmit() {
+    debugger;
     if (!this.mobileRecharge.valid) {
       //this.mobileRecharge.markAsTouched();
       this.mobileRecharge.get("toAc").markAsTouched();
@@ -61,14 +61,13 @@ export class LandingComponent implements OnInit {
     this.isLoading = true;
     const parameterValue = this.getParameterValue();
     this.transactionService.doTransaction(this.transactionService.getTransactionPayload(parameterValue)).pipe(take(1)).subscribe(data=>{
-     // this.snackBar.showMessage("Successfully Send", 2000);
+      debugger;
       this.isLoading = false;
       this.openViewModal(this.getMessageInfoData(data));
       this.transactionService.getAccountInformation.next();
-      this.mobileRecharge.reset();
+      //this.mobileRecharge.reset();
     },
     error => {
-      debugger
       console.log('error :>> ', error);
       this.isLoading = false;
       this.showToasterError(error.error.message)
@@ -125,17 +124,6 @@ export class LandingComponent implements OnInit {
   }
 
   showToasterError(errorMessage){
-    const toasterDescription = `
-    <div class="error-message">Something is wrong</div>
-  `;
-    this.toastr.error("Something is wrong", errorMessage,  { timeOut: 3000, closeButton: true,})
+    this.toastr.error("", errorMessage,  { timeOut: 3000, closeButton: true,})
   }
-
-  // showToasterError(errorMessage) {
-  //   this.toastr2.error('Something is wrong', 'Error', {
-  //     toastClass: 'error-message', // Apply the CSS class
-  //     showCloseButton: true,
-  //     toastLife: 3000 // Time it stays visible
-  //   });
-  // }
 }
