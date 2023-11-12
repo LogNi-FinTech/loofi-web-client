@@ -108,7 +108,7 @@ export const TransactionObject = {
     "amount": "",
     "transactionType": {"txnCode": 1201},
     "note": "",
-    "referenceId": "6411-AZOM",
+    "referenceId": "6411-TEST",
     "tag": "TEST",
     "data": {"reason": "Joma"},
     "description": " ",
