@@ -11,10 +11,10 @@
             <div fxLayout="column" fxLayoutAlign="space-between center" fxLayoutGap="20px">
                 <div class="w-100p" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center" fxLayoutGap="30px" fxLayoutGap.xs="20px">
                     <div fxFlex="50" fxFlex.xs="100" class="input-container">
-                        <input placeholder="Account Number *" type="text" id="toAc" formControlName="toAc" class="input-field">
+                        <input placeholder="Merchant *" type="text" id="toAc" formControlName="toAc" class="input-field">
                         <div *ngIf="formGroup.get('toAc').invalid && formGroup.get('toAc').touched"
                             class="text-danger">
-                            Please enter account number.
+                            Merchant is required.
                         </div>
                     </div>
             
@@ -22,7 +22,7 @@
                         <input placeholder="Amount *" type="number" id="amount" formControlName="amount" class="input-field">
                         <ng-container *ngIf="formGroup.get('amount').invalid && formGroup.get('amount').touched">
                             <div class="text-danger">
-                                Please enter amount.
+                                Amount is required.
                             </div>
                         </ng-container>
                     </div>

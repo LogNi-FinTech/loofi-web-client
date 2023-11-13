@@ -135,6 +135,36 @@
     color: white;
 }
 
+.underline {
+    width: calc(100% - 40px) !important;
+}
+
+.action-title {
+    width: calc(100% - 40px) !important;;
+}
+
+.general-info{
+    width: calc(100% - 40px) !important;
+    height: 50px !important;
+    margin: auto;
+    margin-bottom: 6px;
+    margin-top: 6px;
+    padding: 0px 66px;
+    border-radius: 6px;
+    background-color: white;
+    /* background-color: rgb(48, 99, 245, 0.4); */
+    /* background: white; */
+    /* color: black; */
+    color: rgb(30, 41, 59);
+    box-shadow: 5px 5px 10px 5px rgba(32, 181, 232, 0.1);;
+}
+
+.value, .key{
+    font-family: "Varela Round", sans-serif;
+    font-size: 16px !important;
+    font-weight: 600;
+}
+
 ::ng-deep .app-full-bleed-dialog{
     @media screen and (max-width: 560px) {
         width: 100% !important;
@@ -159,6 +189,15 @@
     .balance-show {
         font-size: 14px !important;
         color: white;
+    }
+
+    .general-info{
+        height: 35px !important;
+        padding: 0px 36px;
+    }
+
+    .value, .key{
+        font-size: 14px !important;
     }
 
     // .balance{

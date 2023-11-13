@@ -35,16 +35,16 @@
 
                 <!-- Email field -->
                 <mat-form-field class="w-full" floatLabel="always">
-                    <mat-label>Identifier</mat-label>
-                    <input placeholder="Identifier"
+                    <mat-label>Account/Wallet Identifier</mat-label>
+                    <input placeholder="Account/Wallet Identifier"
                         id="email"
                         matInput
                         [formControlName]="'identifier'">
                     <mat-error *ngIf="signInForm.get('identifier').hasError('required')">
-                        Identifier is required
+                        Account/Wallet Identifier is required
                     </mat-error>
                     <mat-error *ngIf="signInForm.get('identifier').hasError('email')">
-                        Please enter a valid identifier
+                        Please enter a valid Account/Wallet Identifier
                     </mat-error>
                 </mat-form-field>
 

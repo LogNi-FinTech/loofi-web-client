@@ -39,7 +39,6 @@ export class LandingComponent implements OnInit {
   }
 
   public onSubmit() {
-    debugger;
     if (!this.mobileRecharge.valid) {
       //this.mobileRecharge.markAsTouched();
       this.mobileRecharge.get("toAc").markAsTouched();  // 01674242921
@@ -58,7 +57,6 @@ export class LandingComponent implements OnInit {
   }
   
   private getParameterValue(){
-    debugger;
     const identifier = this.authService.userIdentifier;
     const formValue = this.mobileRecharge.getRawValue();
     const txnCode = TxnCode.MobileRecharge;

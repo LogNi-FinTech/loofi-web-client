@@ -39,7 +39,6 @@ export class GeneralInfoComponent implements OnInit, OnDestroy {
 
   private subscribeToGetAccountInformation(){
     this.transactionService.getAccountInformation.pipe(takeUntil(this._unsubscribe)).subscribe(data=> {
-      debugger;
       this.getAccountInfo();
     });
   }
@@ -77,7 +76,7 @@ export class GeneralInfoComponent implements OnInit, OnDestroy {
   public openViewModal(){
     let subscribe = this.dialog.open(ViewDetailComponent, {
      // width: '550px',
-      panelClass: 'app-full-bleed-dialog',
+      panelClass: ['app-full-bleed-dialog', 'general-info'],
       data: {
         balanceInfo: this.balanceInfo,
         accountInfo: this.accountInfo

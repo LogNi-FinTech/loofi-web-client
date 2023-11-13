@@ -12,7 +12,7 @@
         </div>
     </div>
 
-    <div class="balance-info" fxLayout="column"  fxLayoutGap="10px">
+    <!-- <div class="balance-info" fxLayout="column"  fxLayoutGap="10px">
         <div class="balance" fxLayout="row" fxLayoutAlign="space-between center">
             <div class="balance-text">
                 Current Balance
@@ -30,8 +30,52 @@
                 ${{ data.balanceInfo.balance | number: '1.2-2' }}
             </div>
         </div>
+    </div> -->
+    <div class="action-title">
+        General information
     </div>
-    <div class="transaction-summary">
+    <div class="underline"></div>
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="general-info">
+        <div class="key">
+            Name
+        </div>
+        <div class="value">
+            {{data.accountInfo.name}}
+        </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="general-info">
+        <div class="key">
+            Email
+        </div>
+        <div class="value">
+            azomshariar@gmail.com
+        </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="general-info">
+        <div class="key">
+            Mobile
+        </div>
+        <div class="value">
+           01925465885
+        </div>
+    </div>
+    <!-- <div fxLayout="row" fxLayoutAlign="space-between center" class="general-info">
+        <div class="key">
+            Name
+        </div>
+        <div class="value">
+            Azom Shariar
+        </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="general-info">
+        <div class="key">
+            Name
+        </div>
+        <div class="value">
+            Azom Shariar
+        </div>
+    </div> -->
+    <!-- <div class="transaction-summary">
         Transaction Summary
     </div>
     <div class="transaction-info">
@@ -78,7 +122,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </div>
 
 <ng-template #summary let-data='data'>

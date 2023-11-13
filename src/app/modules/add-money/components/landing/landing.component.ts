@@ -2,7 +2,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'app/core/auth/auth.service';
-import { OperatorTypes, TxnCode } from 'app/shared/constant/constant';
+import { AddMoneyAccount, OperatorTypes, TxnCode } from 'app/shared/constant/constant';
 import { SnakBarService } from 'app/shared/service/snak-bar.service';
 import { TransactionService } from 'app/shared/service/transaction.service';
 import { Subject } from 'rxjs';
@@ -39,7 +39,7 @@ export class LandingComponent implements OnInit, OnDestroy {
 
   private initializeForm(){
     this.formGroup = this.formBuilder.group({
-      toAc: ['', [Validators.required]],    //10100
+      toAc: [AddMoneyAccount, [Validators.required]],    //10100
       amount: ['', [Validators.required]],
       note: [''],
     });
@@ -60,11 +60,11 @@ export class LandingComponent implements OnInit, OnDestroy {
       this.isLoading = false;
       this.transactionService.getAccountInformation.next();
       this.formGroup.reset();
+      this.formGroup.get("toAc").setValue(AddMoneyAccount);
     })
   }
 
   private getParameterValue(){
-    debugger
     const formValue = this.formGroup.getRawValue();
     const identifier = formValue.toAc;
     formValue.toAc = this.authService.userIdentifier;

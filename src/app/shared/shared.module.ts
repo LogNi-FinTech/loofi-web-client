@@ -24,6 +24,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { GeneralInfoComponent } from './components/general-info/general-info.component';
 import { ViewDetailComponent } from './modal/view-detail/view-detail.component';
+import { SuccessMessageComponent } from './components/success-message/success-message.component';
 
 
 @NgModule({
@@ -83,13 +84,15 @@ import { ViewDetailComponent } from './modal/view-detail/view-detail.component';
         MatChipsModule,
         MatProgressSpinnerModule,
         GeneralInfoComponent,
-        ViewDetailComponent
+        ViewDetailComponent,
+        SuccessMessageComponent
     ],
     declarations: [
       FeatureGuardComponent,
       GeneralInfoComponent,
       GeneralInfoComponent,
-      ViewDetailComponent
+      ViewDetailComponent,
+      SuccessMessageComponent
     ]
 })
 export class SharedModule
