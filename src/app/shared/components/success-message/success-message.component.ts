@@ -1,6 +1,5 @@
-import { Component, Inject, Input, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { BackMessage } from 'app/shared/constant/constant';
 
 @Component({
   selector: 'app-success-message',
@@ -10,21 +9,18 @@ import { Router } from '@angular/router';
 export class SuccessMessageComponent implements OnInit {
 
   @Input() public messageInfo: any;
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any,
-  private matDialogRef: MatDialogRef<SuccessMessageComponent>,
-  private router: Router) { }
+  @Output() messageEvent = new EventEmitter<string>();
+  public Home = BackMessage.Home;
+  public Page = BackMessage.Page;
+  constructor() { }
 
   ngOnInit(): void {
-    console.log('messageInfo :>> ', this.data.messageInfo);
+    console.log('messageInfo :>> ', this.messageInfo);
   }
 
-  back(){
-    this.matDialogRef.close();
+  back(value){
+    this.messageEvent.emit(value);
   }
 
-  goHome(){
-    this.back();
-    this.router.navigate(['/home'])
-  }
 
 }

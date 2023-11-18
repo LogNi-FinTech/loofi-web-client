@@ -6,7 +6,7 @@
     </div>
     <div class="underline"></div>
 
-    <form [formGroup]="mobileRecharge" class="content">
+    <form [formGroup]="mobileRecharge" class="content" *ngIf="!showSuccessMessage">
         <div class="form-container">
             <div fxLayout="column" fxLayoutAlign="space-between center">
                 <!-- <div class="w-100p" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center" fxLayoutGap="30px" fxLayoutGap.xs="20px">
@@ -66,4 +66,9 @@
 
         </div>
     </form>
+
+    <div *ngIf="showSuccessMessage" class="w-100p">
+        <app-success-message [messageInfo]="successMessageInfo" (messageEvent)="receiveMessage($event)"> </app-success-message>
+    </div>
+
 </div>

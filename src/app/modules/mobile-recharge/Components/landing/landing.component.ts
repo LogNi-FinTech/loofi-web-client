@@ -2,7 +2,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'app/core/auth/auth.service';
-import { OperatorTypes, TxnCode } from 'app/shared/constant/constant';
+import { MerchantAccount, OperatorTypes, TxnCode } from 'app/shared/constant/constant';
 import { SnakBarService } from 'app/shared/service/snak-bar.service';
 import { TransactionService } from 'app/shared/service/transaction.service';
 import { take } from 'rxjs/operators';
@@ -31,7 +31,7 @@ export class LandingComponent implements OnInit {
 
   private initializeForm(){
     this.mobileRecharge = this.formBuilder.group({
-      toAc: ['', [Validators.required]],
+      referenceId: ['', [Validators.required]],
       amount: ['', [Validators.required]],
       accountType: [''],
       operatorType: ['Airtel', [Validators.required]],
@@ -41,7 +41,7 @@ export class LandingComponent implements OnInit {
   public onSubmit() {
     if (!this.mobileRecharge.valid) {
       //this.mobileRecharge.markAsTouched();
-      this.mobileRecharge.get("toAc").markAsTouched();  // 01674242921
+      this.mobileRecharge.get("referenceId").markAsTouched();  // 01674242921
       this.mobileRecharge.get("amount").markAsTouched();
       return;
     }
@@ -60,10 +60,12 @@ export class LandingComponent implements OnInit {
     const identifier = this.authService.userIdentifier;
     const formValue = this.mobileRecharge.getRawValue();
     const txnCode = TxnCode.MobileRecharge;
+    const toAc = MerchantAccount;
     return {
       identifier,
       ...formValue,
-      txnCode
+      txnCode,
+      toAc
     }
   }
 

@@ -26,14 +26,15 @@ export class TransactionService {
     });
   }
 
-  public getTransactionPayload({identifier, toAc, amount, note, txnCode}:{identifier: string, toAc: string, amount: number, note: string, txnCode:string}){
+  public getTransactionPayload({identifier, toAc, amount, note, txnCode, referenceId = "6411-AZOM"}:
+    {identifier: string, toAc: string, amount: number, note: string, txnCode:string, referenceId?: string}){
     return {
       "fromAc": identifier,
       "toAc": toAc,
       "amount": amount,
       "transactionType": {"txnCode": txnCode},
       "note": note,
-      "referenceId": "6411-AZOM",
+      "referenceId": referenceId,
       "tag": "TEST",
       "data": {"reason": "Joma"},
       "description": " ",

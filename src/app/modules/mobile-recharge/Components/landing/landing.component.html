@@ -17,8 +17,8 @@
                                     </mat-form-field> -->
                 <div class="w-100p" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center" fxLayoutGap="30px" fxLayoutGap.xs="20px">
                     <div fxFlex="50" fxFlex.xs="100" class="input-container">
-                        <input placeholder="Mobile Number" type="text" id="number" formControlName="toAc" class="input-field">
-                        <div *ngIf="mobileRecharge.get('toAc').invalid && mobileRecharge.get('toAc').touched"
+                        <input placeholder="Mobile Number" type="text" id="number" formControlName="referenceId" class="input-field">
+                        <div *ngIf="mobileRecharge.get('referenceId').invalid && mobileRecharge.get('referenceId').touched"
                             class="text-danger">
                             Please enter number.
                         </div>

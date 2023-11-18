@@ -1,11 +1,9 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { AuthService } from 'app/core/auth/auth.service';
-import { SuccessMessageComponent } from 'app/shared/components/success-message/success-message.component';
-import { OperatorTypes, TransactionType, TxnCode } from 'app/shared/constant/constant';
-import { SnakBarService } from 'app/shared/service/snak-bar.service';
+import { BackMessage, OperatorTypes, TransactionType, TxnCode } from 'app/shared/constant/constant';
 import { TransactionService } from 'app/shared/service/transaction.service';
 import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs/operators';
@@ -27,13 +25,14 @@ export class LandingComponent implements OnInit {
     status:"",
     amount: 0
   };
+  public showSuccessMessage = false;
+  public successMessageInfo;
   constructor(private breakpointObserver: BreakpointObserver,
     private formBuilder: FormBuilder,
     private transactionService: TransactionService,
-    private snackBar: SnakBarService,
     private authService: AuthService,
-    private dialog: MatDialog,
-    private toastr: ToastrService,) {
+    private toastr: ToastrService,
+    private router: Router) {
      }
 
   ngOnInit(): void {
@@ -63,7 +62,8 @@ export class LandingComponent implements OnInit {
     this.transactionService.doTransaction(this.transactionService.getTransactionPayload(parameterValue)).pipe(take(1)).subscribe(data=>{
       debugger;
       this.isLoading = false;
-      this.openViewModal(this.getMessageInfoData(data));
+      this.successMessageInfo = this.getMessageInfoData(data);
+      this.showSuccessMessage = true;
       this.transactionService.getAccountInformation.next();
       //this.mobileRecharge.reset();
     },
@@ -110,17 +110,12 @@ export class LandingComponent implements OnInit {
     }
   }
 
-  public openViewModal(messageInfo){
-    let subscribe = this.dialog.open(SuccessMessageComponent, {
-     // width: '550px',
-      panelClass: 'app-full-bleed-dialog',
-      data: {
-        messageInfo: messageInfo
-      },
-    });
-    subscribe.afterClosed().subscribe(data=>{
-
-    });
+  public receiveMessage(message: string) {
+    this.showSuccessMessage = false;
+    this.mobileRecharge.reset();
+    if(message == BackMessage.Home){
+      this.router.navigate(['/home'])
+    }
   }
 
   showToasterError(errorMessage){
