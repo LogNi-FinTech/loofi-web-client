@@ -8,7 +8,13 @@
     font-family: 'Varela Round';
     src: url('../assets/fonts/VarelaRound-Regular.ttf') format('truetype') ;
     /* You can also define font-weight and font-style if needed */
-  }
+}
+
+
+.form-group-container{
+    height: 55vh;
+}
+
 
 .project-button {
     height: 55px !important;

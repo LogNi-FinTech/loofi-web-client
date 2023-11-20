@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'app/core/auth/auth.service';
 import { BackMessage, OperatorTypes, TransactionType, TxnCode } from 'app/shared/constant/constant';
+import { SnakBarService } from 'app/shared/service/snak-bar.service';
 import { TransactionService } from 'app/shared/service/transaction.service';
 import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs/operators';
@@ -31,7 +32,7 @@ export class LandingComponent implements OnInit {
     private formBuilder: FormBuilder,
     private transactionService: TransactionService,
     private authService: AuthService,
-    private toastr: ToastrService,
+    private snakBarService: SnakBarService,
     private router: Router) {
      }
 
@@ -49,7 +50,6 @@ export class LandingComponent implements OnInit {
   }
 
   public onSubmit() {
-    debugger;
     if (!this.mobileRecharge.valid) {
       //this.mobileRecharge.markAsTouched();
       this.mobileRecharge.get("toAc").markAsTouched();
@@ -60,7 +60,6 @@ export class LandingComponent implements OnInit {
     this.isLoading = true;
     const parameterValue = this.getParameterValue();
     this.transactionService.doTransaction(this.transactionService.getTransactionPayload(parameterValue)).pipe(take(1)).subscribe(data=>{
-      debugger;
       this.isLoading = false;
       this.successMessageInfo = this.getMessageInfoData(data);
       this.showSuccessMessage = true;
@@ -70,8 +69,8 @@ export class LandingComponent implements OnInit {
     error => {
       console.log('error :>> ', error);
       this.isLoading = false;
-      this.showToasterError(error.error.message)
-    })
+      this.snakBarService.showToasterError(error.error.message)
+    });
   }
 
   private getParameterValue(){
@@ -118,7 +117,4 @@ export class LandingComponent implements OnInit {
     }
   }
 
-  showToasterError(errorMessage){
-    this.toastr.error("", errorMessage,  { timeOut: 3000, closeButton: true,})
-  }
 }
