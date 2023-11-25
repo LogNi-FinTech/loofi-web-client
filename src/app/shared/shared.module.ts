@@ -25,6 +25,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { GeneralInfoComponent } from './components/general-info/general-info.component';
 import { ViewDetailComponent } from './modal/view-detail/view-detail.component';
 import { SuccessMessageComponent } from './components/success-message/success-message.component';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { SuccessMessageComponent } from './components/success-message/success-me
         MatDatepickerModule,
         MatNativeDateModule,
         MatButtonToggleModule,
-        MatProgressSpinnerModule
+        MatProgressSpinnerModule,
+        ToastrModule.forRoot()
     ],
     exports: [
         CommonModule,
@@ -93,7 +95,8 @@ import { SuccessMessageComponent } from './components/success-message/success-me
       GeneralInfoComponent,
       ViewDetailComponent,
       SuccessMessageComponent
-    ]
+    ],
+    providers: [ToastrService],
 })
 export class SharedModule
 {

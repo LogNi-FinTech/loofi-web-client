@@ -134,3 +134,10 @@ export enum TransactionType {
 }
 
 export const AddMoneyAccount = '10100';
+
+export const MerchantAccount = '016742429861';
+
+export enum BackMessage {
+    Home = "Home",
+    Page = "Page"
+}

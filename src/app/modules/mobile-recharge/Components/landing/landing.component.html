@@ -6,19 +6,58 @@
     </div>
     <div class="underline"></div>
 
-    <form [formGroup]="mobileRecharge">
+    
+    <form [formGroup]="formGroup" class="content form-group-container" *ngIf="!showSuccessMessage">
+        <div class="form-container">
+            <div fxLayout="column" fxLayoutAlign="space-between center">
+
+                <mat-form-field class="w-full" floatLabel="always">
+                    <mat-label>Mobile Number</mat-label>
+                    <input placeholder="Mobile Number *"
+                        matInput
+                        [formControlName]="'referenceId'">
+                    <mat-error *ngIf="formGroup.get('referenceId').hasError('required')">
+                        Mobile number is required
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="w-full" floatLabel="always">
+                    <mat-label>Amount</mat-label>
+                    <input placeholder="Amount *"
+                        matInput
+                        [formControlName]="'amount'">
+                    <mat-error *ngIf="formGroup.get('amount').hasError('required')">
+                        Amount is required
+                    </mat-error>
+                </mat-form-field>
+
+                <!-- <div class="operator-container" fxLayout="row wrap" fxLayoutAlign="space-between center" fxLayoutAlign.xs="center center" fxLayoutGap="10px">
+                    <div (click)="changeOperator(i)" fxFlex="15" fxFlex.xs="30" [ngStyle]="{'background': operator.isSelected? '#3063f5' : 'white'}"
+                     class="operator" *ngFor="let operator of operatorTypes; let i = index" fxLayout="column"
+                        fxLayoutAlign="space-between center" fxLayoutGap="10px">
+                        <img class="operator-image" [src]="'assets/operator_icon/' + operator.img">
+                        <div [ngStyle]="{'color': operator.isSelected? 'white' : 'black'}" class="operator-title">{{operator.name}}</div>
+                    </div>
+                </div> -->
+
+
+                <button class="submit" (click)="onSubmit()" mat-raised-button>Confirm</button>
+            </div>
+
+        </div>
+    </form>
+
+    <div *ngIf="showSuccessMessage" class="w-100p">
+        <app-success-message [messageInfo]="successMessageInfo" (messageEvent)="receiveMessage($event)"> </app-success-message>
+    </div>
+
+     <!-- <form [formGroup]="formGroup">
         <div class="form-container">
             <div fxLayout="column" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-                <!-- <mat-form-field fxFlex="50" appearance="fill" class="full-width">
-                                        <input [disabled]="true" placeholder="Mobile Number" matInput type="text" formControlName="number">
-                                        <mat-error *ngIf="mobileRecharge.get('number').invalid && mobileRecharge.get('number').touched">
-                                            Mobile Number is required.
-                                        </mat-error>
-                                    </mat-form-field> -->
                 <div class="w-100p" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center" fxLayoutGap="30px" fxLayoutGap.xs="20px">
                     <div fxFlex="50" fxFlex.xs="100" class="input-container">
-                        <input placeholder="Mobile Number" type="text" id="number" formControlName="toAc" class="input-field">
-                        <div *ngIf="mobileRecharge.get('toAc').invalid && mobileRecharge.get('toAc').touched"
+                        <input placeholder="Mobile Number" type="text" id="number" formControlName="referenceId" class="input-field">
+                        <div *ngIf="formGroup.get('referenceId').invalid && formGroup.get('referenceId').touched"
                             class="text-danger">
                             Please enter number.
                         </div>
@@ -26,7 +65,7 @@
             
                     <div fxFlex="50" fxFlex.xs="100" class="input-container">
                         <input placeholder="Amount" type="number" id="amount" formControlName="amount" class="input-field">
-                        <ng-container *ngIf="mobileRecharge.get('amount').invalid && mobileRecharge.get('amount').touched">
+                        <ng-container *ngIf="formGroup.get('amount').invalid && formGroup.get('amount').touched">
                             <div class="text-danger">
                                 Please enter amount.
                             </div>
@@ -44,18 +83,12 @@
                     </div>
                 </div>
 
-                <!-- <button type="submit" [disabled]="mobileRecharge.invalid" class="btn btn-primary"></button> -->
                 <button class="submit" (click)="onSubmit()" mat-raised-button color="primary">Confirm</button>
-        
-        
-                <!-- <mat-form-field fxFlex="50" appearance="fill" class="full-width">
-                            <input [disabled]="true" placeholder="Amount" matInput type="number" formControlName="amount">
-                            <mat-error *ngIf="mobileRecharge.get('amount').invalid && mobileRecharge.get('amount').touched">
-                                Amount is required.
-                            </mat-error>
-                        </mat-form-field> -->
             </div>
 
         </div>
-    </form>
+    </form>  -->
+
+
+
 </div>
