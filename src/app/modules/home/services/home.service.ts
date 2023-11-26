@@ -24,7 +24,7 @@ export class HomeService {
   // }
 
   public getTransactions(identifier: string){
-    return this._httpClient.get<any>(this.getTransactionsUrl+identifier, {
+    return this._httpClient.get<any>(this.getTransactionsUrl+identifier+"&pageNumber=0&size=50&sort=txnTime,desc", {
       headers: new HttpHeaders({ 'Content-Type': 'application/json', }),
     });
   }

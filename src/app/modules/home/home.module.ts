@@ -1,10 +1,9 @@
-import { NgModule, forwardRef } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomePageComponent } from './Components/home-page/home-page.component';
 import { HomeService } from './services/home.service';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from 'app/shared/shared.module';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 const routes: Routes = [
   // { path: '', pathMatch: 'full', redirectTo: "page"},
@@ -18,8 +17,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    SharedModule,
-    MatButtonToggleModule
+    SharedModule
   ],
   providers: [
     HomeService

@@ -80,7 +80,7 @@ export class LandingComponent implements OnInit, OnDestroy {
       amount: this.formGroup.getRawValue().amount,
       status: data.status,
       txnId: data.txnId,
-      transactionType: TransactionType.MobileRecharge
+      transactionType: TransactionType.AddMoney
     }
   }
 

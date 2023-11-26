@@ -55,6 +55,7 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
         MatNativeDateModule,
         MatButtonToggleModule,
         MatProgressSpinnerModule,
+        MatButtonToggleModule,
         ToastrModule.forRoot()
     ],
     exports: [
@@ -87,7 +88,8 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
         MatProgressSpinnerModule,
         GeneralInfoComponent,
         ViewDetailComponent,
-        SuccessMessageComponent
+        SuccessMessageComponent,
+        MatButtonToggleModule
     ],
     declarations: [
       FeatureGuardComponent,
