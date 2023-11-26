@@ -1,1 +1,88 @@
-<p>landing works!</p>
+<!-- <mat-spinner *ngIf="isLoading" class="spinner"></mat-spinner>
+
+<div class="w-100p" *ngIf="!isLoading">
+
+    <div [formGroup]="filterTransaction" class="transaction-container">
+        <div class="action-title">
+            Grow your money with us
+        </div>
+        <div>
+            <mat-button-toggle-group name="fontStyle" aria-label="Font Style" formControlName="filterTransactionControl" [compareWith]="compareByValue"
+                multiple="false" color="primary">
+                <mat-button-toggle  [ngClass]="{'toggle-button-XsStyle': isXsStyleActive}" class="mr-16" *ngFor="let option of filterTransactions" [value]="option">{{option.viewValue}}
+                </mat-button-toggle>
+            </mat-button-toggle-group>
+        </div> 
+
+        <div class="action-title">
+            My deposit account
+        </div>
+        <div class="underline"></div>
+        <div class="container mt-12">
+            <ul class="responsive-table">
+                <li fxHide.xs class="table-header" fxLayout="row" fxLayoutAlign="space-between center">
+                    <div fxFlex="20" class="col col-1">Account/Wallet</div>
+                    <div fxFlex="20" class="col col-2">Transaction Type</div>
+                    <div fxFlex="15" class="col col-3 pr-60" fxLayout="row" fxLayoutAlign="end end">Amount</div>
+                    <div fxFlex="20" class="col col-4">Transaction ID</div>
+                    <div fxFlex="20" class="col col-4">Date</div>
+                </li>
+                <li *ngFor="let transaction of transactions;" class="table-row-style" fxLayout="row"
+                    fxLayoutAlign="space-between center">
+                    <div class="first-column" fxFlex="20" fxLayout="row" fxLayoutAlign="start center">
+                        <img class="avatar" [src]="'assets/images/avatar/' + transaction.image">
+                        <div fxLayout="column" fxLayoutAlign="start start" [ngStyle]="{'fxLayoutGap': isXsStyleActive? '0px' : '4px'}">
+                            <div [ngClass]="{'money-type-xs-style': isXsStyleActive}"  *ngIf="isXsStyleActive" fxLayout="row" fxLayoutAlign="start center">
+                                <div>{{transaction.txnType}}</div>
+                                <mat-icon class="money-direction-icon" [ngClass]="{'outgoing-direction': !transaction.MoneyDirection,
+                                 'incoming-direction': transaction.MoneyDirection}">
+                                    arrow_circle_down
+                                </mat-icon>
+                            </div>
+                            <div>{{transaction.remoteAccount}}</div>
+                            <div *ngIf="isXsStyleActive" [ngClass]="{'trans-Id-xs-style': isXsStyleActive}">Trans ID: {{transaction.txnId}}</div>
+                        </div>
+                    </div>
+                    <div fxHide.xs fxFlex="20" fxLayout="row" fxLayoutAlign="start center">
+                        <div>{{transaction.txnType}}</div>
+                        <mat-icon class="money-direction-icon" [ngClass]="{'outgoing-direction': !transaction.MoneyDirection,
+                         'incoming-direction': transaction.MoneyDirection}">
+                            arrow_circle_down
+                        </mat-icon>
+                    </div>
+                    <div class="pr-60" fxHide.xs fxFlex="15" fxLayout="row" fxLayoutAlign="end end">
+                        <ng-container [ngTemplateOutlet]="transactionIndicator" [ngTemplateOutletContext]="{transaction:transaction}"></ng-container>
+                    </div>
+                    <div fxHide.xs fxFlex="20">{{transaction.txnId}}</div>
+                    <div class="last-column" fxFlex="20" fxLayout="column" fxLayoutAlign="start start" [ngClass]="{'align-items-end': isXsStyleActive}">
+                        <div *ngIf="isXsStyleActive" fxLayout="row" fxLayoutAlign="start center"> 
+                            <ng-container [ngTemplateOutlet]="transactionIndicator" [ngTemplateOutletContext]="{transaction:transaction}">
+                            </ng-container> 
+                        </div>
+                        <div [ngClass]="{'date-xs-style': isXsStyleActive}"> {{transaction.formattedDate}} </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+</div>
+
+<ng-template #transactionIndicator let-transaction='transaction'>
+    <ng-container *ngIf="transaction.MoneyDirection; else elseTemplate">
+      <div>
+        <span class="green font-w-700 w-14 mr-4">+</span>
+      </div>
+    </ng-container>
+    <ng-template #elseTemplate>
+      <div>
+        <span class="red font-w-700 w-14 mr-4">-</span>
+      </div>
+    </ng-template>
+    <div class="font-w-700"
+         [ngClass]="{'red': !transaction.MoneyDirection, 'green': transaction.MoneyDirection}">
+      {{ transaction.amount | number: '1.2-2' }}
+    </div>
+  </ng-template>
+   -->

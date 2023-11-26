@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from 'app/shared/shared.module';
 import { LandingComponent } from './components/landing/landing.component';
+import { HomeService } from '../home/services/home.service';
 
 const routes: Routes = [
   // { path: '', pathMatch: 'full', redirectTo: "page"},
@@ -17,7 +18,10 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    SharedModule,
+    SharedModule
+  ],
+  providers: [
+    HomeService
   ]
 })
 export class WealthModule { }

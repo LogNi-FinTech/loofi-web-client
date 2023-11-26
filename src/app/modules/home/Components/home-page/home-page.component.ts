@@ -4,8 +4,6 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { HomeService } from '../../services/home.service';
 import { DatePipe } from '@angular/common';
 import { take } from 'rxjs/operators';
-import { MatDialog } from '@angular/material/dialog';
-import { ViewDetailComponent } from '../../../../shared/modal/view-detail/view-detail.component';
 import { UserService } from 'app/shared/service/user.service';
 
 @Component({

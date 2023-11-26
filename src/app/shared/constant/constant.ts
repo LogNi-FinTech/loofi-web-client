@@ -137,6 +137,8 @@ export const AddMoneyAccount = '10100';
 
 export const MerchantAccount = '016742429861';
 
+export const MobileRechargeToAccount = '01674242920'
+
 export enum BackMessage {
     Home = "Home",
     Page = "Page"

@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'app/core/auth/auth.service';
-import { BackMessage, MerchantAccount, OperatorTypes, TransactionType, TxnCode } from 'app/shared/constant/constant';
+import { BackMessage, MobileRechargeToAccount, OperatorTypes, TransactionType, TxnCode } from 'app/shared/constant/constant';
 import { SnakBarService } from 'app/shared/service/snak-bar.service';
 import { TransactionService } from 'app/shared/service/transaction.service';
 import { take } from 'rxjs/operators';
@@ -38,7 +38,7 @@ export class LandingComponent implements OnInit {
       referenceId: ['', [Validators.required]],
       amount: ['', [Validators.required]],
       accountType: [''],
-      operatorType: ['Airtel', [Validators.required]],
+      operatorType: ['Airtel'],
     });
   }
 
@@ -87,7 +87,7 @@ export class LandingComponent implements OnInit {
     const identifier = this.authService.userIdentifier;
     const formValue = this.formGroup.getRawValue();
     const txnCode = TxnCode.MobileRecharge;
-    const toAc = MerchantAccount;
+    const toAc = MobileRechargeToAccount;
     return {
       identifier,
       ...formValue,
