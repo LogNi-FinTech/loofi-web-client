@@ -1,65 +1,88 @@
-<!-- <mat-spinner *ngIf="isLoading" class="spinner"></mat-spinner>
+<!-- <mat-spinner *ngIf="isLoading" class="spinner"></mat-spinner>    -->
 
-<div class="w-100p" *ngIf="!isLoading">
+<div class="w-100p">
 
-    <div [formGroup]="filterTransaction" class="transaction-container">
+    <div class="transaction-container">
+     <div class="grow-money-container" fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="4px">
         <div class="action-title">
             Grow your money with us
         </div>
-        <div>
-            <mat-button-toggle-group name="fontStyle" aria-label="Font Style" formControlName="filterTransactionControl" [compareWith]="compareByValue"
+        <div [formGroup]="filterTransaction" >
+            <mat-button-toggle-group name="fontStyle" aria-label="Font Style" formControlName="filterTransactionControl"
                 multiple="false" color="primary">
-                <mat-button-toggle  [ngClass]="{'toggle-button-XsStyle': isXsStyleActive}" class="mr-16" *ngFor="let option of filterTransactions" [value]="option">{{option.viewValue}}
+                <mat-button-toggle [ngClass]="{'toggle-button-XsStyle': isXsStyleActive, 'unselected-toggle': !option.checked}"
+                    class="mr-16" *ngFor="let option of filterTransactions" [value]="option">{{option.viewValue}}
                 </mat-button-toggle>
             </mat-button-toggle-group>
-        </div> 
+        </div>
+     </div>
 
-        <div class="action-title">
-            My deposit account
+    <div class="mt-16" fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="4px">
+        <div class="w-100p" fxLayout="row" fxLayoutAlign="space-between center">
+            <div class="action-title">
+                My deposit account
+            </div>
+            <button class="deposit-add"  fxFlex="row" fxLayoutAlign="center center">
+                <mat-icon class="invest-add-icon"> add </mat-icon>
+                <span class="pt-2 invest-text">Invest</span>
+            </button>
         </div>
         <div class="underline"></div>
+    </div>
         <div class="container mt-12">
             <ul class="responsive-table">
                 <li fxHide.xs class="table-header" fxLayout="row" fxLayoutAlign="space-between center">
-                    <div fxFlex="20" class="col col-1">Account/Wallet</div>
-                    <div fxFlex="20" class="col col-2">Transaction Type</div>
-                    <div fxFlex="15" class="col col-3 pr-60" fxLayout="row" fxLayoutAlign="end end">Amount</div>
-                    <div fxFlex="20" class="col col-4">Transaction ID</div>
-                    <div fxFlex="20" class="col col-4">Date</div>
+                    <div fxFlex="20" class="col col-1">Account</div>
+                    <div fxFlex="20" class="col col-2">Product</div>
+                    <div fxFlex="15" class="col col-3 text-align-center">Principle Amount</div>
+                    <div fxFlex="20" class="col col-4 text-align-center">Earned</div>
+                    <div fxFlex="20" class="col col-4">Going to Earn</div>
                 </li>
-                <li *ngFor="let transaction of transactions;" class="table-row-style" fxLayout="row"
+                <li fxHide.xs *ngFor="let wealth of wealths;" class="table-row-style" fxLayout="row"
                     fxLayoutAlign="space-between center">
                     <div class="first-column" fxFlex="20" fxLayout="row" fxLayoutAlign="start center">
-                        <img class="avatar" [src]="'assets/images/avatar/' + transaction.image">
-                        <div fxLayout="column" fxLayoutAlign="start start" [ngStyle]="{'fxLayoutGap': isXsStyleActive? '0px' : '4px'}">
-                            <div [ngClass]="{'money-type-xs-style': isXsStyleActive}"  *ngIf="isXsStyleActive" fxLayout="row" fxLayoutAlign="start center">
-                                <div>{{transaction.txnType}}</div>
-                                <mat-icon class="money-direction-icon" [ngClass]="{'outgoing-direction': !transaction.MoneyDirection,
-                                 'incoming-direction': transaction.MoneyDirection}">
-                                    arrow_circle_down
-                                </mat-icon>
-                            </div>
-                            <div>{{transaction.remoteAccount}}</div>
-                            <div *ngIf="isXsStyleActive" [ngClass]="{'trans-Id-xs-style': isXsStyleActive}">Trans ID: {{transaction.txnId}}</div>
+                        <div>{{wealth.account}}</div>
+                    </div>
+                    <div fxFlex="20" fxLayout="row" fxLayoutAlign="start center">
+                        <div>{{wealth.product}}</div>
+                    </div>
+                    <div class="text-align-center" fxFlex="15">
+                        <div>{{wealth.principleAmount | number: '1.2-2'}}</div>
+                    </div>
+                    <div fxFlex="20" class="text-align-center">{{wealth.earned | number: '1.2-2'}}</div>
+                    <div class="last-column" fxFlex="20" fxLayout="column" fxLayoutAlign="start start">
+                        <div> {{wealth.goingToEarn | number: '1.2-2'}} </div>
+                    </div>
+                </li>
+                
+                <li fxShow.gt-xs="false" *ngFor="let wealth of wealths;" class="table-row-style padding-y" fxLayout="row"
+                    fxLayoutAlign="space-between center">
+                    <div fxFlex="100" fxLayout="column" fxLayoutAlign="start center">
+                        <div class="w-100p" fxLayout="row" fxLayoutAlign="start center">
+                            <div fxFlex="35">Account</div>
+                            <div fxFlex="10">:</div>
+                            <div class="wealth-value" fxFlex="55">{{wealth.account}}</div>
                         </div>
-                    </div>
-                    <div fxHide.xs fxFlex="20" fxLayout="row" fxLayoutAlign="start center">
-                        <div>{{transaction.txnType}}</div>
-                        <mat-icon class="money-direction-icon" [ngClass]="{'outgoing-direction': !transaction.MoneyDirection,
-                         'incoming-direction': transaction.MoneyDirection}">
-                            arrow_circle_down
-                        </mat-icon>
-                    </div>
-                    <div class="pr-60" fxHide.xs fxFlex="15" fxLayout="row" fxLayoutAlign="end end">
-                        <ng-container [ngTemplateOutlet]="transactionIndicator" [ngTemplateOutletContext]="{transaction:transaction}"></ng-container>
-                    </div>
-                    <div fxHide.xs fxFlex="20">{{transaction.txnId}}</div>
-                    <div class="last-column" fxFlex="20" fxLayout="column" fxLayoutAlign="start start" [ngClass]="{'align-items-end': isXsStyleActive}">
-                        <div *ngIf="isXsStyleActive" fxLayout="row" fxLayoutAlign="start center"> 
-                            <ng-container [ngTemplateOutlet]="transactionIndicator" [ngTemplateOutletContext]="{transaction:transaction}">
-                            </ng-container> 
+                        <div class="w-100p" fxLayout="row" fxLayoutAlign="start center">
+                            <div fxFlex="35">Product</div>
+                            <div fxFlex="10">:</div>
+                            <div class="wealth-value" fxFlex="55">{{wealth.product}}</div>
                         </div>
-                        <div [ngClass]="{'date-xs-style': isXsStyleActive}"> {{transaction.formattedDate}} </div>
+                        <div class="w-100p" fxLayout="row" fxLayoutAlign="start center">
+                            <div fxFlex="35">Principle Amount</div>
+                            <div fxFlex="10">:</div>
+                            <div class="wealth-value" fxFlex="55">{{wealth.principleAmount | number: '1.2-2'}}</div>
+                        </div>
+                        <div class="w-100p" fxLayout="row" fxLayoutAlign="start center">
+                            <div fxFlex="35">Earned</div>
+                            <div fxFlex="10">:</div>
+                            <div class="wealth-value" fxFlex="55">{{wealth.earned | number: '1.2-2'}}</div>
+                        </div>
+                        <div class="w-100p" fxLayout="row" fxLayoutAlign="start center">
+                            <div fxFlex="35">Going to Earn</div>
+                            <div fxFlex="10">:</div>
+                            <div class="wealth-value" fxFlex="55">{{wealth.goingToEarn | number: '1.2-2'}}</div>
+                        </div>
                     </div>
                 </li>
             </ul>
@@ -69,20 +92,4 @@
 
 </div>
 
-<ng-template #transactionIndicator let-transaction='transaction'>
-    <ng-container *ngIf="transaction.MoneyDirection; else elseTemplate">
-      <div>
-        <span class="green font-w-700 w-14 mr-4">+</span>
-      </div>
-    </ng-container>
-    <ng-template #elseTemplate>
-      <div>
-        <span class="red font-w-700 w-14 mr-4">-</span>
-      </div>
-    </ng-template>
-    <div class="font-w-700"
-         [ngClass]="{'red': !transaction.MoneyDirection, 'green': transaction.MoneyDirection}">
-      {{ transaction.amount | number: '1.2-2' }}
-    </div>
-  </ng-template>
-   -->
+

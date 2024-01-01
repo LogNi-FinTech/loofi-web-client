@@ -1,1 +1,93 @@
-<p>landing works!</p>
+<div class="w-100p">
+
+    <div class="transaction-container">
+     <div class="grow-money-container" fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="4px">
+        <div class="action-title">
+            Credit
+        </div>
+        <div [formGroup]="filterTransaction" >
+            <mat-button-toggle-group name="fontStyle" aria-label="Font Style" formControlName="filterTransactionControl"
+                multiple="false" color="primary">
+                <mat-button-toggle [ngClass]="{'toggle-button-XsStyle': isXsStyleActive, 'unselected-toggle': !option.checked}"
+                    class="mr-16" *ngFor="let option of filterTransactions" [value]="option">{{option.viewValue}}
+                </mat-button-toggle>
+            </mat-button-toggle-group>
+        </div>
+     </div>
+
+    <div class="mt-16" fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="4px">
+        <div class="w-100p" fxLayout="row" fxLayoutAlign="space-between center">
+            <div class="action-title">
+                My Loan
+            </div>
+            <button class="deposit-add"  fxFlex="row" fxLayoutAlign="center center">
+                <mat-icon class="invest-add-icon"> monetization_on </mat-icon>
+                <span class="pt-2 invest-text">Apply for loan</span>
+            </button>
+        </div>
+        <div class="underline"></div>
+    </div>
+        <div class="container mt-12">
+            <ul class="responsive-table">
+                <li fxHide.xs class="table-header" fxLayout="row" fxLayoutAlign="space-between center">
+                    <div fxFlex="20" class="col col-1">Account</div>
+                    <div fxFlex="20" class="col col-2">Principle (Total)</div>
+                    <div fxFlex="15" class="col col-3 text-align-center"> Interest (Total)</div>
+                    <div fxFlex="20" class="col col-4 text-align-center">Principle (Paid)</div>
+                    <div fxFlex="20" class="col col-4">Interest (Paid)</div>
+                </li>
+                <li fxHide.xs *ngFor="let credit of creditInfo;" class="table-row-style" fxLayout="row"
+                    fxLayoutAlign="space-between center">
+                    <div class="first-column" fxFlex="20" fxLayout="row" fxLayoutAlign="start center">
+                        <div>{{credit.account}}</div>
+                    </div>
+                    <div fxFlex="20" fxLayout="row" fxLayoutAlign="start center">
+                        <div>{{credit.principleTotal}}</div>
+                    </div>
+                    <div class="text-align-center" fxFlex="15">
+                        <div>{{credit.interestTotal | number: '1.2-2'}}</div>
+                    </div>
+                    <div fxFlex="20" class="text-align-center">{{credit.principlePaid | number: '1.2-2'}}</div>
+                    <div class="last-column" fxFlex="20" fxLayout="column" fxLayoutAlign="start start">
+                        <div> {{credit.interestPaid | number: '1.2-2'}} </div>
+                    </div>
+                </li>
+                
+                <li fxShow.gt-xs="false" *ngFor="let credit of creditInfo;" class="table-row-style padding-y" fxLayout="row"
+                    fxLayoutAlign="space-between center">
+                    <div fxFlex="100" fxLayout="column" fxLayoutAlign="start center">
+                        <div class="w-100p" fxLayout="row" fxLayoutAlign="start center">
+                            <div fxFlex="35">Account</div>
+                            <div fxFlex="10">:</div>
+                            <div class="wealth-value" fxFlex="55">{{credit.account}}</div>
+                        </div>
+                        <div class="w-100p" fxLayout="row" fxLayoutAlign="start center">
+                            <div fxFlex="35">Principle (Total)</div>
+                            <div fxFlex="10">:</div>
+                            <div class="wealth-value" fxFlex="55">{{credit.principleTotal}}</div>
+                        </div>
+                        <div class="w-100p" fxLayout="row" fxLayoutAlign="start center">
+                            <div fxFlex="35">Interest (Total)</div>
+                            <div fxFlex="10">:</div>
+                            <div class="wealth-value" fxFlex="55">{{credit.interestTotal | number: '1.2-2'}}</div>
+                        </div>
+                        <div class="w-100p" fxLayout="row" fxLayoutAlign="start center">
+                            <div fxFlex="35">Principle (Paid)</div>
+                            <div fxFlex="10">:</div>
+                            <div class="wealth-value" fxFlex="55">{{credit.principlePaid | number: '1.2-2'}}</div>
+                        </div>
+                        <div class="w-100p" fxLayout="row" fxLayoutAlign="start center">
+                            <div fxFlex="35">Interest (Paid)</div>
+                            <div fxFlex="10">:</div>
+                            <div class="wealth-value" fxFlex="55">{{credit.interestPaid | number: '1.2-2'}}</div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+</div>
+
+
