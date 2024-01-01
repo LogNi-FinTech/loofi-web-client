@@ -48,8 +48,8 @@
                             "src/@fuse/styles/themes.scss",
                             "src/styles/vendors.scss",
                             "src/@fuse/styles/main.scss",
-                            "src/styles/styles.scss",
                             "src/styles/tailwind.scss",
+                            "src/styles/styles.scss",
                             "node_modules/ngx-toastr/toastr.css" 
                         ],
                         "scripts": []

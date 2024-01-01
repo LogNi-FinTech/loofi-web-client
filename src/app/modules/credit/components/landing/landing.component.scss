@@ -1,0 +1,505 @@
+.spinner{
+    margin: auto;
+    margin-top: 50px !important;
+}
+
+.services-wrapper {
+    width: calc(100% - 80px);
+    font-family: 'Varela Round', sans-serif;
+    margin: auto;
+    margin-top: 16px;
+    margin-bottom: 25px;
+    font-family: 'Varela Round', sans-serif;
+    height: 160px;
+}
+
+.grow-money-container{
+    padding: 8px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    background-color: white;
+}
+
+.deposit-add{
+    width: 100px;
+    background-color: #3063f5;
+    color: white;
+    border-radius: 4px;
+    padding: 2px;
+    max-width: 150px;
+}
+
+::ng-deep .mat-button-toggle-group .mat-button-toggle.mat-button-toggle-checked .mat-button-toggle-label-content {
+    font-weight: 500;
+    font-family: sans-serif;
+    letter-spacing: 0.5px;
+}
+
+.unselected-toggle {
+    background-color: #e7e7e7 !important;
+}
+  
+
+.action-title{
+    width: 100%;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.underline{
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.account-section{
+    padding: 12px 35px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px 0 rgba(32, 181, 232, 0.05);
+    height: 100%;
+    
+}
+
+.balance-section {
+    padding: 12px 35px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px 0 rgba(32, 181, 232, 0.05);
+    height: 100%;
+}
+
+.invest-add-icon{
+    font-size: 17px;
+    color: white;
+    padding-top: 2px;
+}
+
+.balance-icon{
+    color: #0053CD;
+    font-size: 22px;
+    margin-top: 3px;
+}
+
+.balance-show{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.account {
+    font-size: 18px;
+    font-weight: 500;
+    color: rgb(85, 85, 85);
+    text-transform: uppercase;
+}
+
+.dollar-icon {
+    color: white;
+    font-size: 16px;
+}
+
+.balance {
+    padding: 0 12px;
+    color: white;
+    text-align: center;
+    height: 30px;
+    border-radius: 5px;
+    // background-image: radial-gradient(circle 248px at center, #16d9e3 0%, #30c7ec 47%, #46aef7 100%);
+    background-image: linear-gradient(-225deg, #9EFBD3 0%, #57E9F2 48%, #45D4FB 100%);
+
+    div {
+        padding-top: 2px;
+    }
+}
+
+.balance-text {
+    font-size: 18px;
+    font-weight: 500;
+    color: #909090;
+}
+
+.account-number {
+    font-size: 12px;
+    font-weight: 500;
+    color: #909090;
+    margin-top: 6px;
+    font-family: 'Varela Round', sans-serif;
+}
+
+.transfer-history {
+    font-size: 14px;
+    font-family: 'Varela Round', sans-serif;
+    margin-bottom: 8px !important;
+}
+
+.selected-toggle {
+    color: red;
+}
+
+.mt-4 {
+    margin-top: 4px !important;
+}
+
+.mt-8 {
+    margin-top: 8px !important;
+}
+
+.mt-12 {
+    margin-top: 12px !important;
+}
+
+.mb-8 {
+    margin-bottom: 8px !important;
+}
+
+.mr-16 {
+    margin-right: 16px !important;
+}
+
+.mr-20 {
+    margin-right: 20px !important;
+}
+
+.ml-20 {
+    margin-left: 20px !important;
+}
+
+.pl-4 {
+    padding-left: 4px !important;
+}
+
+.pr-4 {
+    padding-right: 4px !important;
+}
+
+.mr-4 {
+    margin-right: 4px !important;
+}
+
+.mb-15{
+    margin-bottom: 15px !important;
+}
+
+.avatar {
+    height: 35px !important;
+    width: 30px !important;
+    margin-right: 4px;
+    border-radius: 50%;
+}
+
+.custom-element {
+    font-family: 'Varela Round', sans-serif;
+    /* Use a fallback font-family as well */
+}
+
+.custom-icon {
+    color: rgb(32, 181, 232, 1);
+    width: 32px !important;
+    height: 32px !important;
+}
+
+.color-white {
+    color: white !important;
+}
+
+.bg-color {
+    background-color: rgb(32, 181, 232, 1);
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+:host ::ng-deep {
+    .mat-button-toggle-appearance-standard .mat-button-toggle-label-content {
+        line-height: 25px !important;
+    }
+
+    mat-button-toggle.mat-button-toggle-checked,
+    mat-button-toggle.cdk-focused,
+    mat-button-toggle.cdk-mouse-focused {
+        background: rgb(48, 99, 245) !important;
+    }
+
+    .mat-button-toggle-group .mat-button-toggle.mat-button-toggle-checked .mat-button-toggle-label-content {
+        color: white !important;
+    }
+
+    // mat-button-toggle.mat-button-toggle-checked .mat-button-toggle-label-content{
+    //     color: white !important;
+    // }
+}
+
+.mat-button-toggle-checked {
+    background-color: #ec2c4c;
+    color: #67ec79 !important;
+}
+
+mat-button-toggle.mat-button-toggle-checked {
+    background: rgb(32, 181, 232, 1);
+}
+
+mat-button-toggle {
+    background: #4CAF50;
+}
+
+.toggle-button-XsStyle {
+    font-size: 14px !important;
+    margin-right: 8px !important;
+}
+
+.red {
+    color: red;
+}
+
+.green {
+    color: green;
+}
+
+.font-w-700 {
+    font-weight: 700;
+}
+
+.w-14 {
+    width: 14px !important;
+    min-width: 14px !important;
+}
+
+.transaction-container{
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.container {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.money-type-xs-style{
+    font-weight: 600;
+    color: rgba(0, 0, 0, .75);
+}
+
+.date-xs-style{
+    font-size: 11px;
+    color: #909090;
+}
+
+.trans-Id-xs-style{
+    color: rgba(0, 0, 0, .5);
+}
+
+.person-icon{
+    color: #0053CD;
+    font-size: 40px;
+    margin-top: 14px;
+}
+
+.account-name-text{
+    font-size: 14px;
+    color: #6E7A90;
+}
+
+.active-icon{
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: white;
+}
+
+.view-detail{
+    height: 45px;
+    width: 170px;
+    background-color: rgb(48, 99, 245);
+    border-radius: 25px;
+}
+
+.color-white{
+    color: white;
+}
+
+.visibility-icon{
+    font-size: 18px;
+}
+
+.account-status{
+    height: 30px;
+    width: 100px;
+    border-radius: 15px;
+    background-color: #19D49D;
+}
+
+.active-icon{
+    font-size: 14px;
+}
+
+.person-name{
+    font-size: 35px;
+    font-weight: 600;
+}
+
+.pr-60{
+    padding-right: 60px !important;
+}
+.responsive-table {
+    li {
+        border-radius: 3px;
+        padding: 10px 10px;
+        //   display: flex;
+        //   justify-content: space-between;
+        margin-bottom: 6px;
+        font-family: 'Varela Round', sans-serif;
+        font-size: 13px !important;
+    }
+
+    .table-header {
+        background-color: rgba(0, 0, 0, .05);
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+        box-shadow: 5px 5px 10px 0 rgba(32, 181, 232, 0.1);
+        color: rgb(48, 99, 245);
+    }
+
+    .table-row-style {
+        background-color: #ffffff;
+        box-shadow: 5px 5px 10px 0 rgba(32, 181, 232, 0.1);
+        border-radius: 8px;
+    }
+}
+
+.align-items-end{
+    align-items: flex-end !important;
+}
+
+.money-direction-icon{
+    font-size: 16px;
+    margin-bottom: 8px; 
+}
+
+.incoming-direction {
+    transform: rotate(45deg);
+    color: green;
+}
+
+.outgoing-direction {
+    transform: rotate(225deg);
+    color: red;
+}
+
+.rotate-45{
+    transform: rotate(45deg);
+}
+
+.rotate-225{
+    transform: rotate(225deg);
+}
+
+.rotate-90{
+    transform: rotate(90deg);
+    font-size: 20px;
+}
+
+.wealth-value{
+    color: gray !important;
+}
+
+@media screen and (max-width: 560px) {
+
+    .services-wrapper {
+        width: calc(100% - 16px);
+        padding: 12px 0px;
+        margin-top: 0px !important;
+    }
+
+    .account-section{
+        width: 100% !important;
+        padding: 10px 8px !important;
+    }
+
+    .person-name{
+        font-size: 16px !important;
+    }
+
+    .person-icon{
+        font-size: 16px;
+        margin-top: 0px;
+        margin-left: -6px !important;
+    }
+
+    .invest-add-icon{
+        padding-top: 1px;
+    }
+
+    .invest-text{
+        padding-top: 0px;
+    }
+
+    .view-detail{
+        height: 25px;
+        width: 150px;
+    }
+
+    .account-status{
+        height: 22px !important;
+    }
+
+    .account-number{
+        margin-top: 0px !important;
+        margin-bottom: 0px !important;
+    }
+
+    .account-status-number-container{
+        margin-top: 0px !important;
+        margin-bottom: 0px !important; 
+    }
+
+    .balance-section{
+        width: 100% !important;
+        padding: 10px 15px !important;
+    }
+
+    .balance-text {
+        font-size: 13px;
+        width: 100% !important;
+    }
+
+    .balance-container{
+        background-color: #20b5e8;
+        padding: 0px 10px;
+        border-radius: 16px;
+    }
+
+    .balance-show{
+        font-size: 14px !important;
+        color: white;
+    }
+
+    .balance-icon{
+        font-size: 16px;
+        margin-top: 0px !important;
+        margin-left: -2px;
+        color: white;
+    }
+
+    .transaction-container{
+        margin-left: 8px;
+        margin-right: 8px;
+    }
+
+    .responsive-table {
+        li {
+            padding: 5px;
+        }
+    }
+
+    .first-column, .last-column{
+        max-width: 50% !important;
+        width: 50%;
+    }
+
+    .money-direction-icon{
+        margin-bottom: 4px !important;
+    }
+    
+}
